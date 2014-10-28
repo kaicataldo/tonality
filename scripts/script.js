@@ -12,6 +12,10 @@ var keepLoop;
     toggleClicked();
   });
 
+  $('.clear').click(function() {
+    $('.box').removeClass('selected');
+  });
+
 //Play
 function toggleClicked() {
   if ($('.toggle').html() == 'Start') {
