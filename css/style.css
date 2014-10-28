@@ -72,8 +72,11 @@ button {
 .made-by a {
   color: #EEE;
 }
-.made-by a:hover {
+.brian:hover {
   color: #75A3FF;
+}
+.kai:hover {
+  color: #0F9473;
 }
 @media (max-width: 900px) {
   .made-by {
