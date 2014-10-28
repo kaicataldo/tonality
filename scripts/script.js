@@ -110,18 +110,18 @@ $(function() {
   function playSound(column) {
     var notesToPlay = [];
 
-    $(column).children('.selected').each(function () {
+    $(column).children('.selected').each(function() {
       var addNote = $(this).html();
       notesToPlay.push(addNote); 
       console.log(notesToPlay);
+      sound1.play();
       });
-      //console.log(notesToPlay);
-      for (i = 0; i < notesToPlay.length; i++) {
+      for (var i = 0; i < notesToPlay.length; i++) {
         console.log(notesToPlay[i]);
-        //soundToPlay = 'sound' + notesToPlay[i];
-        //soundToPlay.play();
-        //console.log(soundToPlay);
+        var soundToPlay = eval('sound' + notesToPlay[i]);
+        soundToPlay.play();
       }
+      notesToPlay = [];
     }
 
 });
