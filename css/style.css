@@ -2,6 +2,7 @@ body {
   background: #333;
   color: transparent;
   text-align: center;
+  min-width: 528px;
 }
 h1,h2 {
   font-family: corbertregular;
@@ -20,14 +21,24 @@ h2 {
 }
 
 button {
-  padding: .5rem;
+  width: 90px;
   font-family: corbertregular;
-  font-size: 2rem;
+  font-weight: bold;
+  font-size: 1.6rem;
+  margin: 0 10px;
+  border-radius: 10%;
+  background: #FFF;
+  transition: background .4s ease
 }
-
+.toggle:hover {
+  background: #75A3FF;
+}
+.clear:hover {
+  background: #FF6666;
+}
 .grid {
   display: inline-block;
-  margin-top: 60px;
+  margin: 10px auto;
 }
 .col {
   float: left;
@@ -37,17 +48,18 @@ button {
   width: 30px;
   height: 30px;
   margin: 3px 0;
-  background: #777;
+  background: #BBB;
+  border-radius: 10%;
 }
 .box:hover {
   cursor: pointer;
 }
 .active {
-  background: #00FFFF;
+  background: #66FF99;
 }
 .selected {
   background: #EEE;
 }
 .selected.active {
-  background: black; 
+  background: #FFFF66; 
 }

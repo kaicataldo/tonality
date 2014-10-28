@@ -30,7 +30,7 @@ function toggleClicked() {
 }
 
 function gridLoop() {
-  if (keepLoop === true) {
+  if (keepLoop) {
     setTimeout(function() {
       var column = ".col-" + i;
       $(column).children().toggleClass('active');
