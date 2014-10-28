@@ -12,16 +12,6 @@ var keepLoop;
     toggleClicked();
   });
 
-/*
-
-activeBoxes = {
-  column1 = [row-3, row-9],
-  column2 = [],
-  column3 = 
-   
-*/
-
-
 //Play
 function toggleClicked() {
   if ($('.toggle').html() == 'Start') {
@@ -38,12 +28,14 @@ function toggleClicked() {
 function gridLoop() {
   if (keepLoop === true) {
     setTimeout(function() {
-      $(".col-" + i).toggleClass("active");
+      var column = ".col-" + i;
+      $(column).children().toggleClass('active');
+      playSound(column);
       if (i == 1) {
-        $(".col-16").removeClass("active");
+        $(".col-16").children().removeClass("active");
       }
       else {
-        $(".col-" + (i - 1)).toggleClass("active");
+        $(".col-" + (i - 1)).children().toggleClass("active");
       }
       i++;
       if (i <= 16){
@@ -62,28 +54,15 @@ function gridLoop() {
   }
 }
 
-function playSound(){
-  return;
-
+function playSound(column) {
+  if ($(column).children('.selected').html() == '1') {
+      console.log('1');
+  }
+  if ($(column).children('.selected').html() == '2') {
+      console.log('2');
+  }
 }
-
 
 });
-
-
-/*
-
-Col[1]Row[1]
-
-activeBoxes = {
-  column1 = [row-3, row-9],
-  column2 = [],
-  column3 = [],
-}
-
-}
-
-    
-*/
 
 
