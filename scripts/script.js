@@ -98,7 +98,7 @@ $(function() {
           i = 1;
           gridLoop();
         }
-       }, 500);
+       }, 120);
     }
     else {
       i = 1;
