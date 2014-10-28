@@ -114,7 +114,6 @@ $(function() {
       var addNote = $(this).html();
       notesToPlay.push(addNote); 
       console.log(notesToPlay);
-      sound1.play();
       });
       for (var i = 0; i < notesToPlay.length; i++) {
         console.log(notesToPlay[i]);
