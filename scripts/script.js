@@ -55,12 +55,13 @@ function gridLoop() {
 }
 
 function playSound(column) {
-  if ($(column).children('.selected').html() == '1') {
-      console.log('1');
-  }
-  if ($(column).children('.selected').html() == '2') {
-      console.log('2');
-  }
+  var notesToPlay = [];
+
+  $(column).children('.selected').each(function () {
+    var addNote = $(this).html();
+    notesToPlay.push(addNote); 
+  });
+  console.log(notesToPlay);
 }
 
 });
