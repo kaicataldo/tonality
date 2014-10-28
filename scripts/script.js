@@ -83,13 +83,13 @@ $(function() {
       setTimeout(function() {
         var column = ".col-" + i;
         $(column).children().toggleClass('active');
-        playSound(column);
         if (i == 1) {
           $(".col-16").children().removeClass("active");
         }
         else {
           $(".col-" + (i - 1)).children().toggleClass("active");
         }
+        playSound(column);
         i++;
         if (i <= 16){
           gridLoop();        
@@ -113,13 +113,16 @@ $(function() {
     $(column).children('.selected').each(function () {
       var addNote = $(this).html();
       notesToPlay.push(addNote); 
-    });
-    //console.log(notesToPlay);
-    for (i = 0; i < notesToPlay.length; i++) {
-      soundToPlay = 'sound' + notesToPlay[i];
-      soundToPlay.play();
+      console.log(notesToPlay);
+      });
+      //console.log(notesToPlay);
+      for (i = 0; i < notesToPlay.length; i++) {
+        console.log(notesToPlay[i]);
+        //soundToPlay = 'sound' + notesToPlay[i];
+        //soundToPlay.play();
+        //console.log(soundToPlay);
+      }
     }
-  }
 
 });
 
