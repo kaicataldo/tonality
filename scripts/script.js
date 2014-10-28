@@ -12,15 +12,9 @@ var keepLoop;
     toggleClicked();
   });
 
-/*
-
-activeBoxes = {
-  column1 = [row-3, row-9],
-  column2 = [],
-  column3 = 
-   
-*/
-
+  $('.clear').click(function() {
+    $('.box').removeClass('selected');
+  });
 
 //Play
 function toggleClicked() {
@@ -38,12 +32,14 @@ function toggleClicked() {
 function gridLoop() {
   if (keepLoop === true) {
     setTimeout(function() {
-      $(".col-" + i).toggleClass("active");
+      var column = ".col-" + i;
+      $(column).children().toggleClass('active');
+      playSound(column);
       if (i == 1) {
-        $(".col-16").removeClass("active");
+        $(".col-16").children().removeClass("active");
       }
       else {
-        $(".col-" + (i - 1)).toggleClass("active");
+        $(".col-" + (i - 1)).children().toggleClass("active");
       }
       i++;
       if (i <= 16){
@@ -62,28 +58,16 @@ function gridLoop() {
   }
 }
 
-function playSound(){
-  return;
+function playSound(column) {
+  var notesToPlay = [];
 
+  $(column).children('.selected').each(function () {
+    var addNote = $(this).html();
+    notesToPlay.push(addNote); 
+  });
+  console.log(notesToPlay);
 }
-
 
 });
-
-
-/*
-
-Col[1]Row[1]
-
-activeBoxes = {
-  column1 = [row-3, row-9],
-  column2 = [],
-  column3 = [],
-}
-
-}
-
-    
-*/
 
 
