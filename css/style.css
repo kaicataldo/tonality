@@ -63,15 +63,22 @@ button {
 .selected.active {
   background: #FFFF66; 
 }
-.with-love {
+.made-by {
   color: #EEE;
   position: absolute;
   bottom: 20px;
   right: 20px;
 }
-.with-love a {
+.made-by a {
   color: #EEE;
 }
-.with-love a:hover {
+.made-by a:hover {
   color: #75A3FF;
+}
+
+@media (max-width: 900px) {
+  .made-by {
+    position: static;
+    margin-top: 20px
+  }
 }
