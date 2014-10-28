@@ -63,3 +63,15 @@ button {
 .selected.active {
   background: #FFFF66; 
 }
+.with-love {
+  color: #EEE;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.with-love a {
+  color: #EEE;
+}
+.with-love a:hover {
+  color: #75A3FF;
+}
