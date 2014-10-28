@@ -7,15 +7,20 @@ body {
 .grid {
   display: inline-block;
   margin-top: 60px;
-
+}
+.col {
+  float: left;
+  margin: 0 1.5px;
 }
 .box {
-  float: left;
   width: 30px;
   height: 30px;
-  margin: 3px;
+  margin: 3px 0;
   background: #777;
 }
-.col-1 {
-  clear: both;
+.active {
+  background: #00FFFF;
+}
+.selected {
+  background: #EEE;
 }
