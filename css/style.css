@@ -75,7 +75,6 @@ button {
 .made-by a:hover {
   color: #75A3FF;
 }
-
 @media (max-width: 900px) {
   .made-by {
     position: static;
