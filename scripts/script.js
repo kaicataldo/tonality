@@ -111,7 +111,7 @@ $(function() {
     var notesToPlay = [];
 
     $(column).children('.selected').each(function() {
-      var addNote = $(this).html();
+      var addNote = $(this).find('span').html();
       notesToPlay.push(addNote); 
       console.log(notesToPlay);
       });
