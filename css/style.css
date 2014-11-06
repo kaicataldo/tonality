@@ -40,6 +40,9 @@ button {
   display: inline-block;
   margin: 10px auto;
 }
+.grid span {
+  display: none;
+}
 .col {
   float: left;
   margin: 0 1.5px;
