@@ -14,16 +14,16 @@ $(function() {
   createSoundPack();
 
   //toggles selected class
-  $('.box').click(function() {
+  $(".box").click(function() {
     $(this).toggleClass("selected");
   });
 
-  $('.toggle').click(function() {
+  $(".toggle").click(function() {
     toggleClicked();
   });
 
-  $('.clear').click(function() {
-    $('.box').removeClass('selected');
+  $(".clear").click(function() {
+    $(".box").removeClass("selected");
   });
 
   //Dynamically build HTML grid
@@ -65,20 +65,12 @@ $(function() {
 
 
   function getOptions() {
-
-    var container = $(".options");
-
-    /*
-    var optionsBox = $.map($('.option'), function(el) {
-      return {$(el).attr("data-option"):$(el).val()}
+    $(".option").each( function(el) {
+      console.log($(this).val());
+      if ($(this).val() !== ( undefined || "" ) ) {
+        settings[$(this).attr("data-option")] = $(this).val();
+      }
     });
-    for (var optionsIndex = 0; optionsIndex <= optionsBox.length; optionsIndex++){
-      settings.optionsBox[optionsIndex]
-    }*/
-  }
-
-  function setInterval(value) {
-    console.log("setting interval");
   }
 
   //Start button <-> Stop Button 
