@@ -84,6 +84,10 @@ button {
 .selected.active {
   background: #FFFF66; 
 }
+<<<<<<< HEAD
+=======
+.made-by {
+>>>>>>> beats-subdivisions
 .toggle:hover {
   background: #75A3FF;
 }

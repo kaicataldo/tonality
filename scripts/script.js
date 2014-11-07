@@ -6,7 +6,12 @@ $(function() {
     fadeOutVal:null,
     loopStatus:null,
     currentCol:1,
-    colInterval:120
+    colInterval:120,
+    beats:4,
+    subdivision:4,
+    defaulCols: 16,
+    totalCols: 16,
+    selectedBlocks: []
   };
 
   buildGrid();
@@ -45,11 +50,35 @@ $(function() {
     $(".box").removeClass("selected");
   });
 
+  $(".rebuild").click(function() {
+    getOptions();
+    resetGrid();
+  });
+
+  //Start button <-> Stop Button 
+  function toggleClicked() {
+    if ($('.toggle').html() == 'Start') {
+      $('.toggle').html('Stop');
+      settings.loopStatus = true;
+      gridLoop();
+    }
+    else if ($('.toggle').html() == 'Stop') {
+      $('.toggle').html('Start');
+      settings.loopStatus = false;
+    }
+  }
+
+  function resetGrid() {
+    $(".col").remove();
+    buildGrid();
+  }
+
   //Dynamically build HTML grid
   function buildGrid() {
     var container = $(".grid");
+    settings.totalCols = settings.beats * settings.subdivision;
     //Loop through each row.
-    for (var colIndex = 1; colIndex <= 16; colIndex++) {
+    for (var colIndex = 1; colIndex <= settings.totalCols; colIndex++) {
         //Create the skeleton for the row.
         var col = $("<div>", {
             "class": "col col-"+ colIndex,
@@ -71,6 +100,10 @@ $(function() {
     }
   }
 
+  function saveSelected() {
+    console.log("");
+  }
+
   //Dynamically create sound file references
   function createSoundPack() {
     for(var soundIndex = 1; soundIndex<=16; soundIndex++) {
@@ -85,17 +118,20 @@ $(function() {
   //Gets the values from each HTML <input> and assigns to the appropriate setting
   function getOptions() {
     $(".option").each( function(el) {
+      var dataName = $(this).attr("data-option");
+      var dataVal = $(this).val();
       //console.log($(this).val());
-      if ($(this).attr("data-option") === "colInterval") {
-        var sixteenth = Math.round((((60/$(this).val())*1000)*100000)/100000)/4;
+      if (dataName === "colInterval") {
+        var milliseconds = Math.round((((60/dataVal)*1000)*100000)/100000)/settings.subdivision;
         //console.log("Sixteenth is precisely "+sixteenth+" milliseconds");
-        settings[$(this).attr("data-option")] = sixteenth;
+        settings[dataName] = milliseconds;
       } else {
-        settings[$(this).attr("data-option")] = $(this).val();
+        settings[dataName] = dataVal;
       }
     });
   }
 
+<<<<<<< HEAD
   //Start button <-> Stop Button 
   function toggleClicked() {
     if ($('.toggle').html() == 'Start') {
@@ -126,32 +162,42 @@ $(function() {
     });
   }
 
+=======
+>>>>>>> beats-subdivisions
   //Loop through every column
   function gridLoop() {
-    if (settings.loopStatus) {
-      setTimeout( function() {
-        $(".col-" + settings.currentCol).children().toggleClass("active");
-        if (settings.currentCol == 1) {
-          $(".col-16").children().removeClass("active");
-        }
-        else {
-          $(".col-"+(settings.currentCol - 1)).children().removeClass("active");
-        }
-        playSound(".col-" + settings.currentCol);
-        settings.currentCol++;
-        if (settings.currentCol <= 16){
-          gridLoop();        
-        }
-        else if (settings.currentCol == 17) {
-          settings.currentCol = 1;
-          gridLoop();
-        }
-       }, settings.colInterval);
+    getOptions();
+    if (settings.totalCols !== settings.defaultCols) {
+      resetGrid();
     }
-    else {
-      settings.currentCol = 1;
-      $(".box").removeClass("active");
-      return;
+    insideLoop();
+    function insideLoop() {
+      if (settings.loopStatus) {
+        settings.totalCols = settings.beats * settings.subdivision;
+        setTimeout( function() {
+          $(".col-" + settings.currentCol).children().toggleClass("active");
+          if (settings.currentCol == 1) {
+            $(".col-"+settings.totalCols).children().removeClass("active");
+          }
+          else {
+            $(".col-"+(settings.currentCol - 1)).children().removeClass("active");
+          }
+          playSound(".col-" + settings.currentCol);
+          settings.currentCol++;
+          if (settings.currentCol <= settings.totalCols){
+            insideLoop();        
+          }
+          else if (settings.currentCol == settings.totalCols + 1) {
+            settings.currentCol = 1;
+            insideLoop();
+          }
+         }, settings.colInterval);
+      }
+      else {
+        settings.currentCol = 1;
+        $(".box").removeClass("active");
+        return;
+      }
     }
   }
 
