@@ -17,19 +17,40 @@ $(function() {
   buildGrid();
   createSoundPack();
 
-  //toggles selected class
+  //Renders Tempo knob
+  $(".knob").knob({
+    'min': 1,
+    'max': 240,
+    'release': getOptions()
+  });
+
+  //Toggles selected class
   $(".box").click(function() {
     $(this).toggleClass("selected");
   });
 
-  $(".toggle").click(function() {
-    toggleClicked();
-  });
+  //Event listeners for toggling Start/Stop
+  //Click button
+   $(".toggle").click(function() {
+     toggleClicked();
+   });
 
+  //Press spacebar
+  $(window).keypress(function(e) {
+    if (e.keyCode == 0 || e.keyCode == 32) {
+      if ("activeElement" in document) {
+      document.activeElement.blur();
+      }
+      toggleClicked();
+    }
+  });
+ 
+  //Reset button
   $(".clear").click(function() {
     $(".box").removeClass("selected");
   });
-
+  
+  //Rebuild grid button
   $(".rebuild").click(function() {
     getOptions();
     resetGrid();
@@ -113,38 +134,31 @@ $(function() {
 
   //Loop through every column
   function gridLoop() {
-    getOptions();
-    if (settings.totalCols !== settings.defaultCols) {
-      resetGrid();
+    if (settings.loopStatus) {
+      settings.totalCols = settings.beats * settings.subdivision;
+      setTimeout( function() {
+        $(".col-" + settings.currentCol).children().toggleClass("active");
+        if (settings.currentCol == 1) {
+          $(".col-"+settings.totalCols).children().removeClass("active");
+        }
+        else {
+          $(".col-"+(settings.currentCol - 1)).children().removeClass("active");
+        }
+        playSound(".col-" + settings.currentCol);
+        settings.currentCol++;
+        if (settings.currentCol <= settings.totalCols){
+          insideLoop();        
+        }
+        else if (settings.currentCol == settings.totalCols + 1) {
+          settings.currentCol = 1;
+          insideLoop();
+        }
+       }, settings.colInterval);
     }
-    insideLoop();
-    function insideLoop() {
-      if (settings.loopStatus) {
-        settings.totalCols = settings.beats * settings.subdivision;
-        setTimeout( function() {
-          $(".col-" + settings.currentCol).children().toggleClass("active");
-          if (settings.currentCol == 1) {
-            $(".col-"+settings.totalCols).children().removeClass("active");
-          }
-          else {
-            $(".col-"+(settings.currentCol - 1)).children().removeClass("active");
-          }
-          playSound(".col-" + settings.currentCol);
-          settings.currentCol++;
-          if (settings.currentCol <= settings.totalCols){
-            insideLoop();        
-          }
-          else if (settings.currentCol == settings.totalCols + 1) {
-            settings.currentCol = 1;
-            insideLoop();
-          }
-         }, settings.colInterval);
-      }
-      else {
-        settings.currentCol = 1;
-        $(".box").removeClass("active");
-        return;
-      }
+    else {
+      settings.currentCol = 1;
+      $(".box").removeClass("active");
+      return;
     }
   }
 
