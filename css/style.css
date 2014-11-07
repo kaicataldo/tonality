@@ -1,11 +1,11 @@
 body {
+  font-family: corbertregular;
   background: #333;
   color: transparent;
   text-align: center;
   min-width: 528px;
 }
 h1,h2 {
-  font-family: corbertregular;
   color: white;
 }
 
@@ -30,11 +30,10 @@ button {
   background: #FFF;
   transition: background .4s ease
 }
-.toggle:hover {
-  background: #75A3FF;
-}
-.clear:hover {
-  background: #FF6666;
+.sidebar {
+  width: 25%;
+  height: auto;
+  color: White;
 }
 .grid {
   display: inline-block;
@@ -66,7 +65,17 @@ button {
 .selected.active {
   background: #FFFF66; 
 }
+<<<<<<< HEAD
 .made-by {
+=======
+.toggle:hover {
+  background: #75A3FF;
+}
+.clear:hover {
+  background: #FF6666;
+}
+.with-love {
+>>>>>>> Audio-customizations
   color: #EEE;
   position: absolute;
   bottom: 20px;
