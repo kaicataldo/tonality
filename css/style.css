@@ -1,11 +1,11 @@
+/*** Basic Styles
+********************/
 body {
   font-family: corbertregular;
   background: #333;
   color: transparent;
   text-align: center;
   min-width: 528px;
-}
-h1,h2 {
   color: white;
 }
 
@@ -30,15 +30,34 @@ button {
   background: #FFF;
   transition: background .4s ease
 }
+
+/*** Layout
+********************/
 .sidebar {
-  width: 25%;
-  height: auto;
-  color: White;
+  float: left;
+  display: inline-block;
 }
-.grid {
+.sidebar {
+  display: block;
+  width: 20%;
+}
+.grid-container {
+  min-width: 535px;
+  width: 50%;
   display: inline-block;
   margin: 10px auto;
 }
+.grid {
+  width: 100%;
+}
+
+/*** Settings
+********************/
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+/*** Grid
+********************/
 .grid span {
   display: none;
 }
@@ -65,23 +84,22 @@ button {
 .selected.active {
   background: #FFFF66; 
 }
-<<<<<<< HEAD
-.made-by {
-=======
 .toggle:hover {
   background: #75A3FF;
 }
 .clear:hover {
   background: #FF6666;
 }
+
+/*** Links
+********************/
 .with-love {
->>>>>>> Audio-customizations
   color: #EEE;
   position: absolute;
   bottom: 20px;
   right: 20px;
 }
-.made-by a {
+.with-love a {
   color: #EEE;
 }
 .brian:hover {
@@ -90,6 +108,10 @@ button {
 .kai:hover {
   color: #0F9473;
 }
+
+
+/*** Responsiveness
+********************/
 @media (max-width: 900px) {
   .made-by {
     position: static;

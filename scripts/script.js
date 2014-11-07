@@ -16,6 +16,7 @@ $(function() {
   $(".knob").knob({
     'min': 1,
     'max': 240,
+    'width': '100',
     'release': getOptions()
   });
 
