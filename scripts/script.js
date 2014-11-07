@@ -12,15 +12,34 @@ $(function() {
   buildGrid();
   createSoundPack();
 
-  //toggles selected class
+  //Renders Tempo knob
+  $(".knob").knob({
+    'min': 1,
+    'max': 240,
+    'release': getOptions()
+  });
+
+  //Toggles selected class
   $(".box").click(function() {
     $(this).toggleClass("selected");
   });
 
+  //Event listeners for toggling Start/Stop
+  //Click button
   $(".toggle").click(function() {
     toggleClicked();
   });
+  //Press spacebar
+  $(window).keypress(function(e) {
+  if (e.keyCode == 0 || e.keyCode == 32) {
+    if ("activeElement" in document) {
+    document.activeElement.blur();
+    }
+    toggleClicked();
+  }
+});
 
+  //Reset button
   $(".clear").click(function() {
     $(".box").removeClass("selected");
   });
@@ -90,6 +109,21 @@ $(function() {
     }
   }
 
+  //Options and Settings
+  function getOptions() {
+    $(".option").each( function(el) {
+      console.log($(this).val());
+      if ($(this).val() !== ( undefined || "" ) ) {
+        if ($(this).attr("data-option") === "colInterval") {
+          var sixteenth = Math.round((((60/$(this).val())*1000)*100000)/100000)/4;
+          console.log("Sixteenth is precisely "+sixteenth+" milliseconds");
+          settings[$(this).attr("data-option")] = sixteenth;
+        } else {
+          settings[$(this).attr("data-option")] = $(this).val();
+        }
+      }
+    });
+  }
 
   //Loop through every column
   function gridLoop() {
