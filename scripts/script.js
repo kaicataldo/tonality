@@ -1,4 +1,3 @@
-//ready function - this script won't load until the dom has been loaded
 $(function() {
 
   var settings = {
@@ -66,7 +65,7 @@ $(function() {
   //Gets the values from each HTML <input> and assigns to the appropriate setting
   function getOptions() {
     $(".option").each( function(el) {
-      console.log($(this).val());
+      //console.log($(this).val());
       if ($(this).attr("data-option") === "colInterval") {
         var sixteenth = Math.round((((60/$(this).val())*1000)*100000)/100000)/4;
         //console.log("Sixteenth is precisely "+sixteenth+" milliseconds");
