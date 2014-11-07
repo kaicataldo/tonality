@@ -169,17 +169,17 @@ $(function() {
     var markedColumns = $('.grid').find(".col");
     var measureMarkers = settings.beats * settings.subdivision;
 
-    $(markedColumns).removeClass('downbeat downbeat-measure');
-    for (i = 1; i < markedColumns.length; i++ ) {
+    $(markedColumns).children().removeClass('downbeat downbeat-measure');
+    for (i = 0; i < markedColumns.length; i++ ) {
       if (i % settings.subdivision === 0) {
-        $(markedColumns[i]).addClass('downbeat');
+        $(markedColumns[i]).children().addClass('downbeat');
         console.log(i + "downbeats");
       }
     }
-    for (j = 1; j < markedColumns.length; j++ ) {
+    for (j = 0; j < markedColumns.length; j++ ) {
       if (j % measureMarkers === 0) {
         console.log(j + "measure beats");
-        $(markedColumns[j]).addClass('downbeat-measure');
+        $(markedColumns[j]).children().addClass('downbeat-measure');
       }
     }
   }

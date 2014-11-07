@@ -39,7 +39,7 @@ button {
   width: 20%;
 }
 .grid-container {
-  min-width: 535px;
+width: 1070px;
   display: inline-block;
   margin: 10px auto;
 }
@@ -64,7 +64,7 @@ button {
 }
 .box {
   width: 30px;
-  height: 30px;
+  height: 20px;
   margin: 3px 0;
   background: #BBB;
   border-radius: 10%;
@@ -72,10 +72,10 @@ button {
 .box:hover {
   cursor: pointer;
 }
-.active {
+.active, .active.downbeat, .active.downbeat-measure {
   background: #66FF99;
 }
-.selected {
+.selected, .selected.downbeat, .selected.downbeat-measure {
   background: #EEE;
 }
 .selected.active {
@@ -88,18 +88,21 @@ button {
   background: #FF6666;
 }
 .downbeat {
-  border-left: 3px solid #EEE;
+  background: maroon;
 }
 .downbeat-measure {
-  border-left: 3px solid yellow;
+  background: orange;
+}
+.selected.active.downbeat {
+  background: pink;
+}
+.selected.active.downbeat-measure {
+  background: yellow;
 }
 /*** Links
 ********************/
 .with-love {
   color: #EEE;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
 }
 .with-love a {
   color: #EEE;
