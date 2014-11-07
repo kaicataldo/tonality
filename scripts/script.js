@@ -68,7 +68,13 @@ $(function() {
     $(".option").each( function(el) {
       console.log($(this).val());
       if ($(this).val() !== ( undefined || "" ) ) {
-        settings[$(this).attr("data-option")] = $(this).val();
+        if ($(this).attr("data-option") === "colInterval") {
+          var sixteenth = Math.round((((60/$(this).val())*1000)*100000)/100000)/4;
+          console.log("Sixteenth is precisely "+sixteenth+" milliseconds");
+          settings[$(this).attr("data-option")] = sixteenth;
+        } else {
+          settings[$(this).attr("data-option")] = $(this).val();
+        }
       }
     });
   }
