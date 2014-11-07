@@ -26,10 +26,6 @@ $(function() {
     $('.box').removeClass('selected');
   });
 
-  function setInterval(value){
-    console.log("setting interval");
-  }
-
   //Dynamically build HTML grid
   function buildGrid() {
     var container = $(".grid");
@@ -57,7 +53,7 @@ $(function() {
   }
 
   //Dynamically create sound file references
-  function createSoundPack (){
+  function createSoundPack() {
     for(var soundIndex = 1; soundIndex<=16; soundIndex++) {
       settings.soundPack[soundIndex-1] = new Howl({
         urls: ['media/'+soundIndex+'.ogg', 'media/'+soundIndex+'.mp3'],
@@ -68,13 +64,21 @@ $(function() {
   }
 
 
-  function getOptions(){
+  function getOptions() {
+
+    var container = $(".options");
+
+    /*
     var optionsBox = $.map($('.option'), function(el) {
-      return {name: $(el).attr("data-option"), value: $(el).val()}
+      return {$(el).attr("data-option"):$(el).val()}
     });
     for (var optionsIndex = 0; optionsIndex <= optionsBox.length; optionsIndex++){
-      console.log(optionsBox[optionsIndex]); 
-    }
+      settings.optionsBox[optionsIndex]
+    }*/
+  }
+
+  function setInterval(value) {
+    console.log("setting interval");
   }
 
   //Start button <-> Stop Button 
