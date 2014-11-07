@@ -21,11 +21,12 @@ $(function() {
   $(".knob").knob({
     'min': 1,
     'max': 240,
+    'width': 100,
     'release': getOptions()
   });
 
   //Toggles selected class
-  $(".box").click(function() {
+  $('body').on('click', '.box', function() {
     $(this).toggleClass("selected");
   });
 
@@ -54,6 +55,7 @@ $(function() {
   $(".save").click(function() {
     getOptions();
     resetGrid();
+    $(".box").removeClass("active");
   });
 
   //Start button <-> Stop Button 
@@ -103,6 +105,7 @@ $(function() {
         }
       }
       settings.totalCols = newTotalCols;
+      settings.currentCol = 1;
     }
 
   //Dynamically build HTML grid

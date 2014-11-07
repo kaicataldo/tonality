@@ -35,15 +35,11 @@ button {
 ********************/
 .sidebar {
   float: left;
-  display: inline-block;
-}
-.sidebar {
   display: block;
   width: 20%;
 }
 .grid-container {
   min-width: 535px;
-  width: 50%;
   display: inline-block;
   margin: 10px auto;
 }
