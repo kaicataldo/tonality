@@ -23,7 +23,8 @@ $(function() {
     'min': 1,
     'max': 240,
     'width': 100,
-    'release': function (v) { setTempo('colInterval', v)}
+    'change': function (v) { setTempo('colInterval', v) },
+    'release': function (v) { setTempo('colInterval', v) }
   });
 
 //Event Handlers
@@ -238,5 +239,3 @@ $(function() {
     }
 
 });
-
-
