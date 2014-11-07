@@ -74,7 +74,7 @@ $(function() {
     var newTotalCols = settings.beats * settings.subdivision;
     if (newTotalCols !== settings.totalCols) {
       if (newTotalCols > settings.totalCols) {
-        for (var currentCol = settings.totalCols; currentCol <= newTotalCols; currentCol++) {
+        for (var currentCol = settings.totalCols + 1; currentCol <= newTotalCols; currentCol++) {
           //Create the skeleton for the row.
           var col = $("<div>", {
               "class": "col col-"+ currentCol,
