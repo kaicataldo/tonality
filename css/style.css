@@ -52,6 +52,17 @@ button {
 .sidebar h2 {
   margin-bottom: 20px;
 }
+
+/*** Style Classes
+********************/
+
+.box.downbeat {
+  background: #EEE;
+}
+.box.selected.active {
+  background: #EEEE66;
+}
+
 /*** Grid
 ********************/
 .grid span {
@@ -75,7 +86,7 @@ button {
   background: #66FF99;
 }
 .selected {
-  background: #EEE;
+  background: #000;
 }
 .selected.active {
   background: #FFFF66; 
@@ -104,7 +115,6 @@ button {
 .kai:hover {
   color: #0F9473;
 }
-
 
 /*** Responsiveness
 ********************/

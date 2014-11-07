@@ -9,6 +9,7 @@ $(function() {
     measures: 1,
     beats:4,
     subdivision:4,
+    downbeat: "",
     defaulCols: 16,
     totalCols: 16,
     selectedBlocks: []
@@ -54,23 +55,20 @@ $(function() {
   });
     
   //Measures/Beats/Subdivision listeners
+  $('.measures-container input').on('change', function() {
+    settings.measures = $('input[name="measures"]:checked', '.measures-container').val(); 
+    resetGrid();
+  });
+
   $('.beats-container input').on('change', function() {
     settings.beats = $('input[name="beats"]:checked', '.beats-container').val(); 
     resetGrid();
-    $(".box").removeClass("active");
   });
 
   $('.subdivision-container input').on('change', function() {
     settings.subdivision = $('input[name="subdivision"]:checked', '.subdivision-container').val(); 
+    console.log("Subdivision is now: "+settings.subdivision);
     resetGrid();
-    $(".box").removeClass("active");
-  });
-
-  $('.measures-container input').on('change', function() {
-    settings.measures = $('input[name="measures"]:checked', '.measures-container').val(); 
-    console.log
-    resetGrid();
-    $(".box").removeClass("active");
   });
 
   //Start button <-> Stop Button 
@@ -87,30 +85,31 @@ $(function() {
   }
 
 //Functions
- //Dynamically build HTML grid
+  //Dynamically build HTML grid
   function buildGrid() {
     var container = $(".grid");
     settings.totalCols = settings.measures * settings.beats * settings.subdivision;
     //Loop through each row.
     for (var colIndex = 1; colIndex <= settings.totalCols; colIndex++) {
-        //Create the skeleton for the row.
-        var col = $("<div>", {
-            "class": "col col-"+ colIndex,
-            "id": "col-"+ colIndex
+      findDownbeat(colIndex);
+      //Create the skeleton for the row.
+      var col = $("<div>", {
+          "class": "col col-"+colIndex,
+          "id": "col-"+colIndex
+      });
+      //Loop through each column
+      for (var rowIndex = 1; rowIndex <= 16; rowIndex++) {
+        //Create skeleton for the column.
+        var row = $("<div>", {
+            "class": "box row-"+rowIndex + settings.downbeat,
+            "id": "col"+colIndex+"row"+rowIndex,
+            "note": rowIndex
         });
-        //Loop through each column
-        for (var rowIndex = 1; rowIndex <= 16; rowIndex++) {
-          //Create skeleton for the column.
-          var row = $("<div>", {
-              "class": "box row-"+rowIndex,
-              "id": "col"+colIndex+"row"+rowIndex,
-              "note": rowIndex
-          });
-          //Append to the row div.
-          col.append(row);
-        }
-        //Finally append this row to the container.
-        container.append(col);
+        //Append to the row div.
+        col.append(row);
+      }
+      //Finally append this row to the container.
+      container.append(col);
     }
   }
 
@@ -131,6 +130,8 @@ $(function() {
     if (newTotalCols !== settings.totalCols) {
       if (newTotalCols > settings.totalCols) {
         for (var currentCol = settings.totalCols + 1; currentCol <= newTotalCols; currentCol++) {
+          console.log(settings.totalCols+" and "+currentCol);
+          findDownbeat(currentCol);
           //Create the skeleton for the row.
           var col = $("<div>", {
               "class": "col col-"+ currentCol,
@@ -140,7 +141,7 @@ $(function() {
           for (var rowIndex = 1; rowIndex <= 16; rowIndex++) {
             //Create skeleton for the column.
             var row = $("<div>", {
-                "class": "box row-"+rowIndex,
+                "class": "box row-"+rowIndex + settings.downbeat,
                 "id": "col"+currentCol+"row"+rowIndex,
                 "note": rowIndex
             });
@@ -158,9 +159,20 @@ $(function() {
             }
         }
       }
+      $(".box").removeClass("active");
       settings.totalCols = newTotalCols;
       settings.currentCol = 1;
     }
+
+  function findDownbeat(currentCol) {
+    settings.downbeat = "";
+      if ((currentCol === 1) || ((currentCol-1) % settings.subdivision === 0)) {
+        console.log("Column"+currentCol+" is now a downbeat");
+        settings.downbeat = " downbeat";
+      } else {
+        settings.downbeat = "";
+      }
+  }
 
   //Set tempo
   function setTempo(dataName, dataVal) {
