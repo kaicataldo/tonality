@@ -13,6 +13,13 @@ $(function() {
   buildGrid();
   createSoundPack();
 
+  //Renders Tempo knob
+  $(".knob").knob({
+    'min': 1,
+    'max': 240,
+    'release': getOptions()
+  });
+
   //toggles selected class
   $(".box").click(function() {
     $(this).toggleClass("selected");
