@@ -20,8 +20,24 @@
   	<div class="sidebar options">
   		<h2>Options</h2>
       <h4>Tempo</h4><input class="knob option input" value="120"  data-option="colInterval">
-      <h4>Beats</h4><input class="option input" value="4"  data-option="beats">
-      <h4>Subs</h4><input class="option input" value="4"  data-option="subdivision">
+      <h4>Measures</h4>
+      <form class="measures-container">
+        <input class="option input" type="radio" name="measures" value="1" data-option="measures" checked>1<br>
+        <input class="option input" type="radio" name="measures" value="2" data-option="measures">2<br>
+        <input class="option input" type="radio" name="measures" value="3" data-option="measures">3<br>
+        <input class="option input" type="radio" name="measures" value="4" data-option="measuress">4
+      </form> 
+      <h4>Beats</h4>
+      <form class="beats-container">
+        <input class="option input" type="radio" name="beats" value="3" data-option="beats">3<br>
+        <input class="option input" type="radio" name="beats" value="4" data-option="beats" checked>4<br>
+        <input class="option input" type="radio" name="beats" value="5" data-option="beats">5
+      </form> 
+       <h4>Subs</h4>
+      <form class="subdivision-container">
+        <input class="option input" type="radio" name="subdivision" value="3" data-option="subdivision">3<br>
+        <input class="option input" type="radio" name="subdivision" value="4" data-option="subdivision" checked>4
+      </form> 
     </div>
   			<!--<input class="option input" data-option="playheadColor" data-type="css" data-class="active" placeholder="Tempo: 120 (default)" value="blue"></input>
   			<input class="option input" data-option="bunnies" placeholder="Tempo: 120 (default)" value="cute"></input>
@@ -32,7 +48,6 @@
   </div>
 	<button class="toggle">Start</button>
   <button class="clear">Clear</button>
-	<button class="save">Save</button>
 	<p class="with-love">
 	Made with love by <a href="https://github.com/bsantero">Brian</a> and <a href="https://github.com/kaicataldo">Kai</a>.
 	</p>
