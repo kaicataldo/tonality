@@ -1,56 +1,5 @@
 //ready function - this script won't load until the dom has been loaded
 $(function() {
-<<<<<<< HEAD
-  var sound1 = new Howl({
-    urls: ['media/1.ogg']
-  });
-  var sound2 = new Howl({
-    urls: ['media/2.ogg']
-  });
-  var sound3 = new Howl({
-    urls: ['media/3.ogg']
-  });
-  var sound4 = new Howl({
-    urls: ['media/4.ogg']
-  });
-  var sound5 = new Howl({
-    urls: ['media/5.ogg']
-  });
-  var sound6 = new Howl({
-    urls: ['media/6.ogg']
-  });
-  var sound7 = new Howl({
-    urls: ['media/7.ogg']
-  });
-  var sound8 = new Howl({
-    urls: ['media/8.ogg']
-  });
-  var sound9 = new Howl({
-    urls: ['media/9.ogg']
-  });
-  var sound10 = new Howl({
-    urls: ['media/10.ogg']
-  });
-  var sound11 = new Howl({
-    urls: ['media/11.ogg']
-  });
-  var sound12 = new Howl({
-    urls: ['media/12.ogg']
-  });
-  var sound13 = new Howl({
-    urls: ['media/13.ogg']
-  });
-  var sound14 = new Howl({
-    urls: ['media/14.ogg']
-  });
-  var sound15 = new Howl({
-    urls: ['media/15.ogg']
-  });
-  var sound16 = new Howl({
-    urls: ['media/16.ogg']
-  });
-=======
->>>>>>> Audio-customizations
 
   var settings = {
     soundPack:[],
@@ -178,15 +127,9 @@ $(function() {
     var notesToPlay = [];
 
     $(column).children('.selected').each(function() {
-<<<<<<< HEAD
-      var addNote = $(this).find('span').html();
-      notesToPlay.push(addNote); 
-      console.log(notesToPlay);
-=======
       var addNote = $(this).attr('note');
       notesToPlay.push(addNote);
       console.log("The notes to play are: "+notesToPlay);
->>>>>>> Audio-customizations
       });
       for (var iPlay = 0; iPlay < notesToPlay.length; iPlay++) {
         //console.log(notesToPlay[iPlay]);
