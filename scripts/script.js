@@ -51,7 +51,7 @@ $(function() {
   });
   
   //Rebuild grid button
-  $(".rebuild").click(function() {
+  $(".save").click(function() {
     getOptions();
     resetGrid();
   });
@@ -70,9 +70,40 @@ $(function() {
   }
 
   function resetGrid() {
-    $(".col").remove();
-    buildGrid();
-  }
+    var container = $(".grid");
+    var newTotalCols = settings.beats * settings.subdivision;
+    if (newTotalCols !== settings.totalCols) {
+      if (newTotalCols > settings.totalCols) {
+        for (var currentCol = settings.totalCols; currentCol <= newTotalCols; currentCol++) {
+          //Create the skeleton for the row.
+          var col = $("<div>", {
+              "class": "col col-"+ currentCol,
+              "id": "col-"+ currentCol
+          });
+          //Loop through each column
+          for (var rowIndex = 1; rowIndex <= 16; rowIndex++) {
+            //Create skeleton for the column.
+            var row = $("<div>", {
+                "class": "box row-"+rowIndex,
+                "id": "col"+currentCol+"row"+rowIndex,
+                "note": rowIndex
+            });
+            //Append to the row div.
+            col.append(row);
+          }
+            //Finally append this row to the container.
+            container.append(col);
+          }
+        } else if (newTotalCols < settings.totalCols) {
+            console.log("delete "+ (settings.totalCols - newTotalCols) +" columns");
+            for (var currentCol = settings.totalCols; currentCol > newTotalCols; currentCol--) {
+              console.log(currentCol);
+              $(".grid").children().last().remove();
+            }
+        }
+      }
+      settings.totalCols = newTotalCols;
+    }
 
   //Dynamically build HTML grid
   function buildGrid() {
@@ -87,14 +118,14 @@ $(function() {
         });
         //Loop through each column
         for (var rowIndex = 1; rowIndex <= 16; rowIndex++) {
-            //Create skeleton for the column.
-            var row = $("<div>", {
-                "class": "box row-"+rowIndex,
-                "id": "col"+colIndex+"row"+rowIndex,
-                "note": rowIndex
-            });
-            //Append to the row div.
-            col.append(row);
+          //Create skeleton for the column.
+          var row = $("<div>", {
+              "class": "box row-"+rowIndex,
+              "id": "col"+colIndex+"row"+rowIndex,
+              "note": rowIndex
+          });
+          //Append to the row div.
+          col.append(row);
         }
         //Finally append this row to the container.
         container.append(col);
@@ -147,11 +178,11 @@ $(function() {
         playSound(".col-" + settings.currentCol);
         settings.currentCol++;
         if (settings.currentCol <= settings.totalCols){
-          insideLoop();        
+          gridLoop();        
         }
         else if (settings.currentCol == settings.totalCols + 1) {
           settings.currentCol = 1;
-          insideLoop();
+          gridLoop();
         }
        }, settings.colInterval);
     }
