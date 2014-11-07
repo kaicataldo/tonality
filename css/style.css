@@ -53,16 +53,6 @@ button {
   margin-bottom: 20px;
 }
 
-/*** Style Classes
-********************/
-
-.box.downbeat {
-  background: #EEE;
-}
-.box.selected.active {
-  background: #EEEE66;
-}
-
 /*** Grid
 ********************/
 .grid span {
@@ -86,7 +76,7 @@ button {
   background: #66FF99;
 }
 .selected {
-  background: #000;
+  background: #EEE;
 }
 .selected.active {
   background: #FFFF66; 
@@ -97,7 +87,12 @@ button {
 .clear:hover {
   background: #FF6666;
 }
-
+.downbeat {
+  border-left: 3px solid #EEE;
+}
+.downbeat-measure {
+  border-left: 3px solid yellow;
+}
 /*** Links
 ********************/
 .with-love {

@@ -9,7 +9,6 @@ $(function() {
     measures: 1,
     beats:4,
     subdivision:4,
-    downbeat: "",
     defaulCols: 16,
     totalCols: 16,
     selectedBlocks: []
@@ -91,17 +90,16 @@ $(function() {
     settings.totalCols = settings.measures * settings.beats * settings.subdivision;
     //Loop through each row.
     for (var colIndex = 1; colIndex <= settings.totalCols; colIndex++) {
-      findDownbeat(colIndex);
       //Create the skeleton for the row.
       var col = $("<div>", {
-          "class": "col col-"+colIndex,
+          "class": "col col-" + colIndex,
           "id": "col-"+colIndex
       });
       //Loop through each column
       for (var rowIndex = 1; rowIndex <= 16; rowIndex++) {
         //Create skeleton for the column.
         var row = $("<div>", {
-            "class": "box row-"+rowIndex + settings.downbeat,
+            "class": "box row-"+rowIndex,
             "id": "col"+colIndex+"row"+rowIndex,
             "note": rowIndex
         });
@@ -111,6 +109,7 @@ $(function() {
       //Finally append this row to the container.
       container.append(col);
     }
+    findDownbeat();
   }
 
   //Dynamically create sound file references
@@ -127,11 +126,11 @@ $(function() {
   function resetGrid() {
     var container = $(".grid");
     var newTotalCols = settings.measures * settings.beats * settings.subdivision;
+
     if (newTotalCols !== settings.totalCols) {
       if (newTotalCols > settings.totalCols) {
         for (var currentCol = settings.totalCols + 1; currentCol <= newTotalCols; currentCol++) {
           console.log(settings.totalCols+" and "+currentCol);
-          findDownbeat(currentCol);
           //Create the skeleton for the row.
           var col = $("<div>", {
               "class": "col col-"+ currentCol,
@@ -141,7 +140,7 @@ $(function() {
           for (var rowIndex = 1; rowIndex <= 16; rowIndex++) {
             //Create skeleton for the column.
             var row = $("<div>", {
-                "class": "box row-"+rowIndex + settings.downbeat,
+                "class": "box row-"+rowIndex,
                 "id": "col"+currentCol+"row"+rowIndex,
                 "note": rowIndex
             });
@@ -150,28 +149,39 @@ $(function() {
           }
             //Finally append this row to the container.
             container.append(col);
-          }
-        } else if (newTotalCols < settings.totalCols) {
-            console.log("delete "+ (settings.totalCols - newTotalCols) +" columns");
-            for (var currentCol = settings.totalCols; currentCol > newTotalCols; currentCol--) {
-              console.log(currentCol);
-              $(".grid").children().last().remove();
-            }
+        }
+      } 
+      else if (newTotalCols < settings.totalCols) {
+        console.log("delete "+ (settings.totalCols - newTotalCols) +" columns");
+        for (var currentCol = settings.totalCols; currentCol > newTotalCols; currentCol--) {
+          console.log(currentCol);
+          $(".grid").children().last().remove();
         }
       }
-      $(".box").removeClass("active");
-      settings.totalCols = newTotalCols;
-      settings.currentCol = 1;
     }
+    $(".box").removeClass("active");
+    settings.totalCols = newTotalCols;
+    settings.currentCol = 1;
+    findDownbeat();
+  }
 
-  function findDownbeat(currentCol) {
-    settings.downbeat = "";
-      if ((currentCol === 1) || ((currentCol-1) % settings.subdivision === 0)) {
-        console.log("Column"+currentCol+" is now a downbeat");
-        settings.downbeat = " downbeat";
-      } else {
-        settings.downbeat = "";
+  function findDownbeat() {
+    var markedColumns = $('.grid').find(".col");
+    var measureMarkers = settings.beats * settings.subdivision;
+
+    $(markedColumns).removeClass('downbeat downbeat-measure');
+    for (i = 1; i < markedColumns.length; i++ ) {
+      if (i % settings.subdivision === 0) {
+        $(markedColumns[i]).addClass('downbeat');
+        console.log(i + "downbeats");
       }
+    }
+    for (j = 1; j < markedColumns.length; j++ ) {
+      if (j % measureMarkers === 0) {
+        console.log(j + "measure beats");
+        $(markedColumns[j]).addClass('downbeat-measure');
+      }
+    }
   }
 
   //Set tempo
