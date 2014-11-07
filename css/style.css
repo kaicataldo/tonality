@@ -1,11 +1,11 @@
 body {
+  font-family: corbertregular;
   background: #333;
   color: transparent;
   text-align: center;
   min-width: 528px;
 }
 h1,h2 {
-  font-family: corbertregular;
   color: white;
 }
 
@@ -19,7 +19,6 @@ h2 {
   font-size: 3rem;
   letter-spacing: -.25rem;
 }
-
 button {
   width: 90px;
   font-family: corbertregular;
@@ -30,18 +29,9 @@ button {
   background: #FFF;
   transition: background .4s ease
 }
-.toggle:hover {
-  background: #75A3FF;
-}
-.clear:hover {
-  background: #FF6666;
-}
 .grid {
   display: inline-block;
   margin: 10px auto;
-}
-.grid span {
-  display: none;
 }
 .col {
   float: left;
@@ -66,24 +56,21 @@ button {
 .selected.active {
   background: #FFFF66; 
 }
-.made-by {
+.toggle:hover {
+  background: #75A3FF;
+}
+.clear:hover {
+  background: #FF6666;
+}
+.with-love {
   color: #EEE;
   position: absolute;
   bottom: 20px;
   right: 20px;
 }
-.made-by a {
+.with-love a {
   color: #EEE;
 }
-.brian:hover {
+.with-love a:hover {
   color: #75A3FF;
-}
-.kai:hover {
-  color: #0F9473;
-}
-@media (max-width: 900px) {
-  .made-by {
-    position: static;
-    margin-top: 20px
-  }
 }

@@ -1,58 +1,38 @@
-//ready function - this script won't load until the dom has been loaded
 $(function() {
-  var sound1 = new Howl({
-    urls: ['media/1.ogg']
-  });
-  var sound2 = new Howl({
-    urls: ['media/2.ogg']
-  });
-  var sound3 = new Howl({
-    urls: ['media/3.ogg']
-  });
-  var sound4 = new Howl({
-    urls: ['media/4.ogg']
-  });
-  var sound5 = new Howl({
-    urls: ['media/5.ogg']
-  });
-  var sound6 = new Howl({
-    urls: ['media/6.ogg']
-  });
-  var sound7 = new Howl({
-    urls: ['media/7.ogg']
-  });
-  var sound8 = new Howl({
-    urls: ['media/8.ogg']
-  });
-  var sound9 = new Howl({
-    urls: ['media/9.ogg']
-  });
-  var sound10 = new Howl({
-    urls: ['media/10.ogg']
-  });
-  var sound11 = new Howl({
-    urls: ['media/11.ogg']
-  });
-  var sound12 = new Howl({
-    urls: ['media/12.ogg']
-  });
-  var sound13 = new Howl({
-    urls: ['media/13.ogg']
-  });
-  var sound14 = new Howl({
-    urls: ['media/14.ogg']
-  });
-  var sound15 = new Howl({
-    urls: ['media/15.ogg']
-  });
-  var sound16 = new Howl({
-    urls: ['media/16.ogg']
-  });
 
-  var i = 1;
-  var keepLoop;
+  //Create Grid
+  var $container = $(".grid");
 
-  //toggles selected class
+  for (var colIndex = 1; colIndex <= 16; colIndex++) {
+    var $col = $("<div>", {
+      "class": "col col-" + colIndex,
+      "id": "col-"+ colIndex
+    });
+    for (var rowIndex = 1; rowIndex <= 16; rowIndex++) {
+      var $row = $("<div>", {
+          "class": "box row-" + rowIndex,
+          "id": "col" + colIndex + "row" + rowIndex,
+          "note": rowIndex
+      });
+      $col.append($row);
+    }
+    $container.append($col);
+  }
+
+  //Assign sounds to rows
+  var sounds = [],
+      fadeInVal,
+      fadeOutVal;
+
+  for(var soundIndex = 1;soundIndex <= 16; soundIndex++) {
+    sounds[soundIndex - 1] = new Howl({
+      urls: ['media/'+soundIndex+'.ogg', 'media/'+soundIndex+'.mp3'],
+      fadeIn: fadeInVal,
+      fadeOut: fadeOutVal
+    });
+  }
+
+  //Toggle active boxes
   $('.box').click(function() {
     $(this).toggleClass("selected");
   });
@@ -65,7 +45,7 @@ $(function() {
     $('.box').removeClass('selected');
   });
 
-  //Play
+  //Start button <-> Stop Button 
   function toggleClicked() {
     if ($('.toggle').html() == 'Start') {
       $('.toggle').html('Stop');
@@ -78,6 +58,9 @@ $(function() {
     }
   }
 
+  //The loop!
+  var i = 1;
+  
   function gridLoop() {
     if (keepLoop) {
       setTimeout(function() {
@@ -107,17 +90,18 @@ $(function() {
     }
   }
 
+  //Play the notes that are selected
   function playSound(column) {
     var notesToPlay = [];
 
     $(column).children('.selected').each(function() {
-      var addNote = $(this).find('span').html();
-      notesToPlay.push(addNote); 
-      console.log(notesToPlay);
+      var addNote = $(this).attr('note');
+      notesToPlay.push(addNote);
+      console.log("The notes to play are: "+notesToPlay);
       });
-      for (var i = 0; i < notesToPlay.length; i++) {
-        console.log(notesToPlay[i]);
-        var soundToPlay = eval('sound' + notesToPlay[i]);
+      for (var iPlay = 0; iPlay < notesToPlay.length; iPlay++) {
+        //console.log(notesToPlay[iPlay]);
+        var soundToPlay = eval("sounds[" + (notesToPlay[iPlay]-1) + "]");
         soundToPlay.play();
       }
       notesToPlay = [];
