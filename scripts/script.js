@@ -50,7 +50,7 @@ $(function() {
   });
  
   //Reset button
-  $(".clear").click(function() {
+  $(".reset").click(function() {
     $(".box").removeClass("selected");
     for (var i in settings.selectedBoxes) {
       settings.selectedBoxes[i] = [];

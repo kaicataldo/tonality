@@ -37,72 +37,66 @@ button {
 
 /*** Layout
 ********************/
-.sidebar {
-  float: left;
-  display: block;
-  width: 100%;
-}
 .grid-container {
-  width: 100%;
-  display: inline-block;
-  margin: 10px auto;
-  padding-left: 10%;
+  max-width: 1070px;
+  margin: 0 auto;
 }
 .grid {
-  width: 100%;
+  margin: 30px auto;
 }
 
 /*** Settings
 ********************/
-.sidebar h2 {
+.settings {
+  display: inline-block;
+  margin: 0 auto;
+}
+.measures-container, .beats-container, .subdivision-container, .tempo-dial {
+  float: left;
+  margin: 6px;
+}
+.settings h2 {
   margin-bottom: 20px;
 }
 
 /*** Grid
 ********************/
-.grid span {
-  display: none;
-}
 .col {
-  float: left;
+  display: inline-block;
   margin: 0 1.5px;
 }
 .box {
   width: 30px;
   height: 20px;
   margin: 3px 0;
-  background: #BBB;
+  background: #CCC;
   border-radius: 10%;
 }
 .box:hover {
   cursor: pointer;
 }
 .active, .active.downbeat, .active.downbeat-measure {
-  background: #66FF99;
+  background: #b3ffcc;
+  box-shadow: 0px 0px 2px #FFF;
 }
 .selected, .selected.downbeat, .selected.downbeat-measure {
-  background: #EEE;
+ background: #EEE; 
 }
 .selected.active {
-  background: #FFFF66; 
+  background: #66FF99;
+  box-shadow: 0px 0px 40px #FFF;
 }
 .toggle:hover {
   background: #75A3FF;
 }
-.clear:hover {
+.reset:hover {
   background: #FF6666;
 }
 .downbeat {
-  background: maroon;
+  background: #999;
 }
 .downbeat-measure {
-  background: orange;
-}
-.selected.active.downbeat {
-  background: pink;
-}
-.selected.active.downbeat-measure {
-  background: yellow;
+  margin-left: 6px;
 }
 /*** Links
 ********************/

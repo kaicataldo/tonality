@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <title>TonaliT</title>
+  <title>Tonality</title>
   <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -14,57 +14,58 @@
   <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
 </head>
 <body>
-
-  <header>
-    <h1>TonaliT</h1>
-    <h2>Music Grid</h2>
-  </header>
-
   <div class="container">
-
-    <div>
-      <button class="toggle">Start</button>
-      <button class="clear">Clear</button>
-    </div>
-
-    <div class="grid-container">
-    	<div class="grid"></div>
-    </div>
-
-    <div class="sidebar options">
-      <h2>Options</h2>
-      <h4>Measures</h4>
-      <form class="measures-container">
-        <input class="option input" type="radio" name="measures" value="1" data-option="measures" checked>1
-        <input class="option input" type="radio" name="measures" value="2" data-option="measures">2
-        <input class="option input" type="radio" name="measures" value="3" data-option="measures">3
-        <input class="option input" type="radio" name="measures" value="4" data-option="measuress">4
-      </form>
-      <h4>Beats</h4>
-      <form class="beats-container">
-        <input class="option input" type="radio" name="beats" value="3" data-option="beats">3
-        <input class="option input" type="radio" name="beats" value="4" data-option="beats" checked>4
-      </form> 
-       <h4>Subs</h4>
-      <form class="subdivision-container">
-        <input class="option input" type="radio" name="subdivision" value="3" data-option="subdivision">3
-        <input class="option input" type="radio" name="subdivision" value="4" data-option="subdivision" checked>4
-      </form>
-      <h4>Tempo</h4><input class="knob option input" value="120"  data-option="colInterval">
-    </div>
-
+    <header>
+      <h1>Tonality</h1>
+      <h2>A Tonal Sequencer</h2>
+    </header>
+    <main>
+      <div class="grid-container">
+      	<div class="grid"></div>
+      </div>
+     <div>
+        <button class="toggle">Start</button>
+        <button class="reset">Clear</button>
+      </div>
+      <div class="settings options">
+        <h2>Options</h2>
+        <div class="tempo-dial">
+          <h4>Tempo</h4><input class="knob option input" value="120"  data-option="colInterval">
+        </div>
+        <div class="measures-container">
+          <h4>Measures</h4>
+          <form>
+            <input class="option input" type="radio" name="measures" value="1" data-option="measures" checked>1
+            <input class="option input" type="radio" name="measures" value="2" data-option="measures">2
+            <input class="option input" type="radio" name="measures" value="3" data-option="measures">3
+            <input class="option input" type="radio" name="measures" value="4" data-option="measuress">4
+          </form>
+        </div>
+        <div class="beats-container">
+          <h4>Beats</h4>
+          <form>
+            <input class="option input" type="radio" name="beats" value="3" data-option="beats">3
+            <input class="option input" type="radio" name="beats" value="4" data-option="beats" checked>4
+          </form> 
+        </div>
+        <div class="subdivision-container">
+          <h4>Subs</h4>
+          <form>
+            <input class="option input" type="radio" name="subdivision" value="3" data-option="subdivision">3
+            <input class="option input" type="radio" name="subdivision" value="4" data-option="subdivision" checked>4
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p class="with-love">
+        Made with love by <a href="https://duckchase.com/">Brian</a> and <a href="https://github.com/kaicataldo">Kai</a>.
+      </p>
+    </footer>
   </div>
-
-  <footer>
-    <p class="with-love">
-      Made with love by <a href="https://duckchase.com/">Brian</a> and <a href="https://github.com/kaicataldo">Kai</a>.
-    </p>
-  </footer>
-
 	<script src="scripts/jquery-1.11.1.min.js"></script>
 	<script src="scripts/howler.min.js"></script>
   <script src="scripts/jquery.knob.min.js"></script>
   <script src="scripts/script.js"></script>
-
 </body>
 </html>
