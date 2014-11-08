@@ -20,6 +20,10 @@ h2 {
   letter-spacing: -.25rem;
 }
 
+h4 {
+  margin: .5em auto .25em;
+}
+
 button {
   width: 90px;
   font-family: corbertregular;
@@ -36,12 +40,13 @@ button {
 .sidebar {
   float: left;
   display: block;
-  width: 20%;
+  width: 100%;
 }
 .grid-container {
-width: 1070px;
+  width: 100%;
   display: inline-block;
   margin: 10px auto;
+  padding-left: 10%;
 }
 .grid {
   width: 100%;
