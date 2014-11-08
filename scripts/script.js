@@ -134,6 +134,7 @@ $(function() {
         settings.selectedBoxes["col"+colIndex] = [];
       }
     }
+    settings.currentCol = 1;
     findDownbeat();
     console.log(settings.selectedBoxes);
   }
