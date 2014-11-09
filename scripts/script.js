@@ -4,8 +4,6 @@ $(function() {
     fadeInVal: 0,
     fadeOutVal: null,
     loopStatus: null,
-    defVolume: .5,
-    downbeatVol: 1,
     currentCol: 1,
     colInterval: 120,
     measures: 1,
@@ -96,7 +94,6 @@ $(function() {
         urls: ['media/'+soundIndex+'.ogg', 'media/'+soundIndex+'.mp3'],
         fadeIn: settings.fadeInVal,
         fadeOut: settings.fadeOutVal,
-        volume: settings.defVolume,
       });
     }
   }
@@ -181,12 +178,7 @@ $(function() {
         else {
           $(".col-"+(settings.currentCol - 1)).children().removeClass("active");
         }
-        //
-        if ( (settings.currentCol === 1) || (settings.currentCol % settings.subdivision === 0) ) {
-          playSound(settings.downbeatVol);
-        } else {
-          playSound(settings.defVolume);
-        }
+        playSound();
         settings.currentCol++;
         if (settings.currentCol <= settings.totalCol){
           gridLoop();        
@@ -205,12 +197,11 @@ $(function() {
   }
 
   //Play the notes that are selected
-  function playSound(noteVol) {
+  function playSound() {
     var notesToPlay = settings.selectedBoxes["col" + settings.currentCol];
     for (var i = 0; i < notesToPlay.length; i++) {
       var soundToPlay = eval("settings.soundPack[" + (notesToPlay[i]-1) + "]");
       soundToPlay.play();
-      soundToPlay.volume(noteVol);
     }
     notesToPlay = [];
   }

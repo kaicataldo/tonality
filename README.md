@@ -1,4 +1,4 @@
-Tonality: A Tonal Sequencer
+Tonality
 =======
 
 Make some music <a href="https://owlduck.github.io/Tonality/">here</a>!
