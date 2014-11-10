@@ -4,7 +4,7 @@ body {
   font-family: corbertregular;
   background: #333;
   color: transparent;
-  color: white;
+  color: #EEE;
 }
 h1, h2 {
   letter-spacing: -.08em;
@@ -61,10 +61,6 @@ h4 {
 header, footer, .settings {
   text-align: center;
 }
-.container {
-  position: relative;
-  height: 100%;
-}
 .grid-container {
   margin: 30px auto 0 auto;
   text-align: center;
@@ -85,12 +81,14 @@ header {
 /*** Footer
 ********************/
 footer {
-  position: absolute;
-  bottom: -8px;
-  right: 12px;
+  width: 100%;
 }
 .made-by {
+  float: right;
   color: #EEE;
+  position: relative;
+  right: 8px;
+  bottom: 8px;
 }
 .made-by a {
   color: #EEE;
