@@ -22,17 +22,26 @@ h4 {
   margin: .5em auto .25em;
 }
 
-button {
-  width: 90px;
-  font-family: corbertregular;
-  font-weight: bold;
-  font-size: 1.6rem;
-  margin: 0 10px;
-  border-radius: 10%;
-  background: #FFF;
-  transition: background .4s ease
+/*** Header
+********************/
+
+/*** Main
+********************/
+.toggle, .reset {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 4px;
+  background: #444;
+  cursor: pointer;
+  font-size: 18px;
+  width: 52px;
 }
 
+/*** Footer
+********************/
+footer {
+  margin: 20px auto 10px auto;
+}
 /*** Page Layout
 ********************/
 header, footer, .settings {
@@ -112,7 +121,7 @@ header, footer, .settings {
 }
 .selected.active {
   background: #66FF99;
-  box-shadow: 0px 0px 40px #FFF;
+  box-shadow: 0px 0px 40px 2px #FFF;
 }
 .toggle:hover {
   background: #75A3FF;
@@ -128,10 +137,10 @@ header, footer, .settings {
 }
 /*** Links
 ********************/
-.with-love {
+.made-by {
   color: #EEE;
 }
-.with-love a {
+.made-by a {
   color: #EEE;
 }
 .brian:hover {
@@ -140,6 +149,3 @@ header, footer, .settings {
 .kai:hover {
   color: #0F9473;
 }
-
-/*** Responsiveness
-********************/

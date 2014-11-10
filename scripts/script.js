@@ -20,7 +20,7 @@ $(function() {
   gridLayout()
   displaySettings();
 
-  //Create settings knobs + knob event handlers
+  //Create tempo knobs
   $('.tempo-knob').knob({
     'min': 1,
     'max': 240,
@@ -30,7 +30,6 @@ $(function() {
     'angleArc': 250,
     'release': function (v) { setTempo('colInterval', v) }
   });
-
 
 //Event Handlers
   //Toggles selected class
@@ -60,7 +59,7 @@ $(function() {
     }
   });
 
-  //Measures/Beats/Subdivision settings
+  //Measures/beats/subdivision settings
   $('.settings-button').click(function() {
     var settingsOption = $(this).attr('data-option');
 
@@ -76,7 +75,7 @@ $(function() {
   });
 
 //Settings Functions
-  //When Box is Selected
+  //Save which boxes selected
   function boxSelected() {
     var col = $(this).attr('data-col');
     var row = $(this).attr('data-row');
@@ -102,14 +101,14 @@ $(function() {
     }
   }
 
-  //Set tempo
+  //Set tempo setting
   function setTempo(dataName, dataVal) {
     var milliseconds = Math.round((((60/dataVal)*1000)*100000)/100000)/settings.subdivision;
         //console.log("Sixteenth is precisely "+sixteenth+" milliseconds");
         settings[dataName] = milliseconds;
   }
 
-  //Set Beats/Measures/Subdivision
+  //Set beats/measures/subdivision setting
   function settingsChange(settingsType, settingsVal) {
     if (settingsType == 'beats') {
       if (settingsVal == 'plus') {
