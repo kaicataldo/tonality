@@ -6,41 +6,71 @@ body {
   color: transparent;
   color: white;
 }
-
 h1 {
-  margin-top: 15px;
   font-size: 5rem;
-  letter-spacing: -.5rem;
+  letter-spacing: -.4rem;
 }
-
+h1 .kerning {
+  letter-spacing: -1.4rem;
+}
 h2 {
   font-size: 3rem;
-  letter-spacing: -.25rem;
+  letter-spacing: -.2rem;
 }
-
-h4 {
+h2 .kerning {
+  letter-spacing: -.8rem;
+}h4 {
   margin: .5em auto .25em;
 }
 
-/*** Header
+/*** Buttons
 ********************/
-
-/*** Main
-********************/
+.settings-button, .toggle, .reset, .settings-toggle {
+  background: #666;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.settings-button {
+  padding: 3px;
+  width: 14px;
+  margin: 6px auto;  
+}
 .toggle, .reset {
   display: inline-block;
-  margin: 0 auto;
+  margin: 0 1px;
   padding: 4px;
-  background: #444;
-  cursor: pointer;
   font-size: 18px;
   width: 52px;
 }
-
+.minus:hover, .reset:hover, .settings-toggle:hover {
+  background: #e6bbad;
+}
+.plus:hover, .toggle:hover, .settings-hover:hover {
+  background: #86c5da;
+}
+/*** Header
+********************/
+header {
+  margin: 30px auto 50px auto;
+}
 /*** Footer
 ********************/
 footer {
-  margin: 20px auto 10px auto;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+.made-by {
+  color: #EEE;
+}
+.made-by a {
+  color: #EEE;
+}
+.brian:hover {
+  color: #75A3FF;
+}
+.kai:hover {
+  color: #0F9473;
 }
 /*** Page Layout
 ********************/
@@ -52,7 +82,7 @@ header, footer, .settings {
   text-align: center;
 }
 .grid {
-  margin: 0 auto;
+  margin: 0 auto 240px auto;
 }
 .clear {
   clear: both;
@@ -60,23 +90,81 @@ header, footer, .settings {
 
 /*** Grid Layouts
 ********************/
-.grid-4-1-4 {
-  max-width: 1068px;
-  min-width: 534px;
+.grid-3-4, .grid-4-3 {
+  max-width: 804px;
 }
-@media (max-width: 1068px) {
-  .grid-4-1-4 {
-    width: 534px;
-    margin: 0 auto;
+@media (max-width: 804px) {
+  .grid-3-4, .grid-4-3 {
+    width: 402px;
     text-align: center;
     display: inline-block;
   }
 }
-
+.grid-3-3 {
+  max-width: 1212px;
+}
+@media (min-width: 607px) and (max-width: 1212px) {
+  .grid-3-3 {
+    width: 606px;
+    text-align: center;
+    display: inline-block;
+  }
+}
+@media (max-width: 606px) {
+  .grid-3-3 {
+    width: 303px;
+    text-align: center;
+    display: inline-block;
+  }
+}
+.grid-3-5 {
+  max-width: 1002px;
+}
+@media (max-width: 1002px) {
+  .grid-3-5 {
+    width: 501px;
+    text-align: center;
+    display: inline-block;
+  }
+}
+.grid-4-4 {
+  max-width: 1068px;
+}
+@media (max-width: 1068px) {
+  .grid-4-4 {
+    width: 534px;
+    text-align: center;
+    display: inline-block;
+  }
+}
+.grid-4-5 {
+  max-width: 1332px;
+}
+@media (max-width: 1332px) {
+  .grid-4-5 {
+    width: 666px;
+    text-align: center;
+    display: inline-block;
+  }
+}
 /*** Settings
 ********************/
+.settings-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 400px;
+  max-width: 480px;
+}
 .settings {
+  position: relative;
   margin: 0 auto;
+  padding: 14px 0 60px 0;
+  background: #444;
+  border-radius: 8px 8px 0 0;
 }
 .measures-container, .beats-container, .subdivision-container, .tempo-container {
   display: inline-block;
@@ -86,19 +174,22 @@ header, footer, .settings {
   margin-bottom: 20px;
 }
 .tempo-h4 {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
-.settings-button {
-  padding: 3px;
-  width: 14px;
-  background: #444;
-  margin: 6px auto;
-  cursor: pointer;
+.settings-toggle {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  padding: 6px 8px 4px 8px;
 }
-.settings-button:hover {
-  background: lightblue;
+.buttons-container {
+  margin-bottom: 20px;
 }
-
+@media (max-width: 480px) {
+  .settings {
+    border-radius: 0 0 0 0 !important;
+  }
+}
 /*** Grid
 ********************/
 .col {
@@ -123,29 +214,9 @@ header, footer, .settings {
   background: #66FF99;
   box-shadow: 0px 0px 40px 2px #FFF;
 }
-.toggle:hover {
-  background: #75A3FF;
-}
-.reset:hover {
-  background: #FF6666;
-}
 .downbeat {
   background: #999;
 }
 .downbeat-measure {
   margin-left: 6px;
-}
-/*** Links
-********************/
-.made-by {
-  color: #EEE;
-}
-.made-by a {
-  color: #EEE;
-}
-.brian:hover {
-  color: #75A3FF;
-}
-.kai:hover {
-  color: #0F9473;
 }

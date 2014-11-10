@@ -12,7 +12,8 @@ $(function() {
     defaulCols: 16,
     totalCol: 16,
     selectedBoxes: {}
-  };
+    },
+    settingsHidden = false;
 
   //Initial setup
   createSoundPack();
@@ -24,10 +25,13 @@ $(function() {
   $('.tempo-knob').knob({
     'min': 1,
     'max': 240,
-    'width': 80,
-    'height': 65,
+    'width': 78,
+    'height': 66,
     'angleOffset': -125,
     'angleArc': 250,
+    'fgColor': '#86c5da',
+    'bgColor': '#666',
+    'lineCap': 'round',
     'release': function (v) { setTempo('colInterval', v) }
   });
 
@@ -48,6 +52,21 @@ $(function() {
       document.activeElement.blur();
       }
       toggleClicked();
+    }
+  });
+
+  $('.settings-toggle').click(function() {
+    if (settingsHidden === false) {
+      $('.settings-container').animate({bottom:'-180px'},500);
+      $('.settings-toggle').html('O');
+      $('.settings-toggle').addClass('settings-hover');
+      settingsHidden = true;
+    }
+    else if (settingsHidden === true) {
+      $('.settings-container').animate({bottom:'0'},500);
+      $('.settings-toggle').html('X');
+      $('.settings-toggle').removeClass('settings-hover');
+      settingsHidden = false;
     }
   });
 
@@ -156,14 +175,36 @@ $(function() {
     displaySettings();
   }
   
+  //Applies class for layout
   function gridLayout() {
-    //ADD ALL THE CASES - SWITCH? IF/ELSE???
-    $('.grid').addClass('grid-4-1-4');
-    responsiveGrid();
+    $('.grid').removeClass().addClass('grid');
+    if (settings.beats == 3) {
+      if (settings.subdivision == 4) {
+        $('.grid').addClass('grid-3-4');
+      }
+      else if (settings.subdivision == 3) {
+        $('.grid').addClass('grid-3-3');
+      }
+      else if (settings.subdivision == 5) {
+        $('.grid').addClass('grid-3-5');
+      }
+    }
+    else if (settings.beats == 4) {
+      if (settings.subdivision == 4) {
+        $('.grid').addClass('grid-4-4');
+      }
+      else if (settings.subdivision == 3) {
+        $('.grid').addClass('grid-4-3');
+      }
+      else if (settings.subdivision == 5) {
+        $('.grid').addClass('grid-4-5');
+      }
+    }
+    gridMeasuresLayout();
   }
 
-  //Applies class for layout
-  function responsiveGrid() {
+  //Fixes grid alignment based on number of measures
+  function gridMeasuresLayout() {
     if (settings.measures == 1) {
       $('.grid').css({ 
         'text-align': 'center',
