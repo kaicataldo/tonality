@@ -59,7 +59,7 @@ $(function() {
   //Settings panel toggle animation
   $('.settings-toggle').click(function() {
     if (settingsHidden === false) {
-      $('.settings-container').animate({bottom:'-180px'},500);
+      $('.settings-container').animate({bottom:'-186px'},500);
       $('.settings-toggle').html('O');
       $('.settings-toggle').addClass('settings-hover');
       settingsHidden = true;
@@ -122,6 +122,7 @@ $(function() {
     }
   }
 
+  //Shows which settings buttons are available to change
   function buttonOptions() {
     if (settings.beats == 4) {
       $('.beats-container .plus').addClass('not-an-option');

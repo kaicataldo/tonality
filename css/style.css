@@ -6,20 +6,20 @@ body {
   color: transparent;
   color: white;
 }
-h1 {
-  font-size: 5rem;
-  letter-spacing: -.4rem;
+h1, h2 {
+  letter-spacing: -.08em;
+  line-height: 1em;
 }
-h1 .kerning {
-  letter-spacing: -1.4rem;
+h1 {
+  font-size: 4em;
 }
 h2 {
-  font-size: 3rem;
-  letter-spacing: -.2rem;
+  font-size: 2em;
 }
-h2 .kerning {
-  letter-spacing: -.8rem;
-}h4 {
+.kerning {
+  letter-spacing: -.26em;
+}
+h4 {
   margin: .5em auto .25em;
 }
 
@@ -64,7 +64,7 @@ header {
 ********************/
 footer {
   position: absolute;
-  bottom: 16px;
+  bottom: 6px;
   right: 16px;
 }
 .made-by {
@@ -72,12 +72,10 @@ footer {
 }
 .made-by a {
   color: #EEE;
+  text-decoration: none;
 }
-.brian:hover {
-  color: #75A3FF;
-}
-.kai:hover {
-  color: #0F9473;
+.made-by a:hover {
+  text-decoration: underline;
 }
 /*** Page Layout
 ********************/
