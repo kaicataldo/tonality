@@ -17,6 +17,7 @@ $(function() {
   //Initial setup
   createSoundPack();
   buildGrid();
+  displaySettings();
 
   //Create settings knobs + knob event handlers
   $('.tempo-knob').knob({
@@ -134,18 +135,34 @@ $(function() {
       }
     }
     else if (settingsType == 'subdivision') {
-      if (settingsVal == 'triplets') {
-        settings.subdivision = 3;
+      if (settingsVal == 'plus') {
+        if (settings.subdivision < 5) {
+          settings.subdivision++;
+        }
       }
-      else if (settingsVal == 'sixteenths') {
-        settings.subdivision = 4;
-      }
-      else if (settingsVal == 'quintuplets') {
-        settings.subdivision = 5;
+      else if (settingsVal == 'minus') {
+        if (settings.subdivision > 3) {
+          settings.subdivision--;
+        }
       }
     }
+    displaySettings();
   }
   
+  //Display settings values
+  function displaySettings() {
+    if (settings.subdivision == 3) {
+      $('.display-subdivision').html('Triplets');
+    }
+    else if (settings.subdivision == 4) {
+      $('.display-subdivision').html('Sixteenths');
+    }
+    else if (settings.subdivision == 5) {
+      $('.display-subdivision').html('Quintuplets');
+    }
+    $('.display-beats').html(settings.beats);
+    $('.display-measures').html(settings.measures);
+  }
 
 //Tonal Sequencer Functions
   //Dynamically create sound file references

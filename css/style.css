@@ -58,7 +58,16 @@ button {
 .settings h2 {
   margin-bottom: 20px;
 }
-
+.settings-button {
+  padding: 3px;
+  width: 14px;
+  background: #444;
+  margin: 6px auto;
+  cursor: pointer;
+}
+.settings-button:hover {
+  background: lightblue;
+}
 /*** Grid
 ********************/
 .col {
