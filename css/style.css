@@ -1,10 +1,15 @@
-/*** Basic Styles
+/*** Base Styles
 ********************/
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
+  height: 100%;
   font-family: corbertregular;
   background: #333;
-  color: transparent;
   color: #EEE;
+  margin: 0 0 24px;
 }
 h1, h2 {
   letter-spacing: -.08em;
@@ -22,7 +27,12 @@ h2 {
 h4 {
   margin: .5em auto .25em;
 }
-
+.clear {
+  clear: both;
+}
+header, footer, .settings {
+  text-align: center;
+}
 /*** Buttons
 ********************/
 .settings-button, .toggle, .reset, .settings-toggle {
@@ -56,94 +66,27 @@ h4 {
   background: #333;
 }
 
-/*** Page Layout
+/*** Header
 ********************/
-header, footer, .settings {
-  text-align: center;
+.title {
+  display: inline-block;
+  margin: 20px auto 40px auto;
 }
+
+/*** Main
+********************/
+main {
+  margin: 20px auto 200px auto;
+}
+
+/*** Grid
+********************/
 .grid-container {
-  margin: 30px auto 0 auto;
   text-align: center;
 }
 .grid {
-  margin: 0 auto 220px auto;
-}
-.clear {
-  clear: both;
-}
-
-/*** Header
-********************/
-header {
-  margin: 30px auto 40px auto;
-}
-
-/*** Footer
-********************/
-footer {
-  width: 100%;
-}
-.made-by {
-  float: right;
-  color: #EEE;
-  position: relative;
-  right: 8px;
-  bottom: 8px;
-}
-.made-by a {
-  color: #EEE;
-  text-decoration: none;
-}
-.made-by a:hover {
-  text-decoration: underline;
-}
-
-/*** Settings
-********************/
-.settings-container {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin-right: auto;
-  margin-left: auto;
-  min-width: 400px;
-  max-width: 480px;
-}
-.settings {
-  position: relative;
   margin: 0 auto;
-  padding: 14px 0 40px 0;
-  background: #444;
-  border-radius: 8px 8px 0 0;
 }
-.measures-container, .beats-container, .subdivision-container, .tempo-container {
-  display: inline-block;
-  margin: 6px;
-  width: 80px;
-}
-.settings h2 {
-  margin-bottom: 20px;
-}
-.tempo-h4 {
-  margin-bottom: 6px;
-}
-.settings-toggle {
-  position: absolute;
-  right: 14px;
-  top: 14px;
-  padding: 6px 8px 4px 8px;
-}
-.buttons-container {
-  margin-bottom: 20px;
-}
-@media (max-width: 480px) {
-  .settings {
-    border-radius: 0 0 0 0 !important;
-  }
-}
-/*** Grid
-********************/
 .col {
   display: inline-block;
   margin: 0 1.5px;
@@ -230,5 +173,72 @@ footer {
     width: 666px;
     text-align: center;
     display: inline-block;
+  }
+}
+
+/*** Footer
+********************/
+footer {
+  height: 24px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.made-by {
+  float: right;
+  padding: 0 8px 4px 0;
+  color: #EEE;
+}
+.made-by a {
+  color: #EEE;
+  text-decoration: none;
+}
+.made-by a:hover {
+  text-decoration: underline;
+}
+
+/*** Settings
+********************/
+.settings-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 400px;
+  max-width: 480px;
+}
+.settings {
+  position: relative;
+  margin: 0 auto;
+  padding: 14px 0 40px 0;
+  background: #444;
+  border-radius: 8px 8px 0 0;
+}
+.measures-container, .beats-container, .subdivision-container, .tempo-container {
+  display: inline-block;
+  margin: 6px;
+  width: 80px;
+}
+.settings h2 {
+  margin-bottom: 20px;
+}
+.tempo-h4 {
+  margin-bottom: 6px;
+}
+.settings-toggle {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  padding: 6px 8px 4px 8px;
+}
+.buttons-container {
+  margin-bottom: 20px;
+}
+@media (max-width: 480px) {
+  .settings {
+    border-radius: 0 0 0 0 !important;
   }
 }
