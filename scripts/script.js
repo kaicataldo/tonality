@@ -71,7 +71,6 @@ $(function() {
     else if ($(this).hasClass('settings-subdivision')) {
       settingsChange('subdivision', settingsOption);
     }
-    buildGrid();
   });
 
 //Settings Functions
@@ -114,11 +113,13 @@ $(function() {
       if (settingsVal == 'plus') {
         if (settings.beats < 4) {
           settings.beats++;
+          buildGrid();
         }
       }
       else if (settingsVal == 'minus') {
         if (settings.beats > 3) {
           settings.beats--;
+          buildGrid();
         }
       }
     }
@@ -126,11 +127,13 @@ $(function() {
       if (settingsVal == 'plus') {
         if (settings.measures < 4) {
           settings.measures++;
+          buildGrid();
         }
       }
       else if (settingsVal == 'minus') {
         if (settings.measures > 1) {
           settings.measures--;
+          buildGrid();
         }
       }
     }
@@ -138,11 +141,13 @@ $(function() {
       if (settingsVal == 'plus') {
         if (settings.subdivision < 5) {
           settings.subdivision++;
+          buildGrid();
         }
       }
       else if (settingsVal == 'minus') {
         if (settings.subdivision > 3) {
           settings.subdivision--;
+          buildGrid();
         }
       }
     }
