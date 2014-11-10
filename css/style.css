@@ -61,8 +61,12 @@ h4 {
 header, footer, .settings {
   text-align: center;
 }
+.container {
+  position: relative;
+  height: 100%;
+}
 .grid-container {
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   text-align: center;
 }
 .grid {
@@ -81,8 +85,8 @@ header {
 /*** Footer
 ********************/
 footer {
-  position: fixed;
-  bottom: 12px;
+  position: absolute;
+  bottom: -8px;
   right: 12px;
 }
 .made-by {
