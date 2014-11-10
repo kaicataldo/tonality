@@ -4,8 +4,6 @@ body {
   font-family: corbertregular;
   background: #333;
   color: transparent;
-  text-align: center;
-  min-width: 528px;
   color: white;
 }
 
@@ -35,28 +33,51 @@ button {
   transition: background .4s ease
 }
 
-/*** Layout
+/*** Page Layout
 ********************/
+header, footer, .settings {
+  text-align: center;
+}
 .grid-container {
-  max-width: 1070px;
-  margin: 0 auto;
+  margin: 30px auto;
+  text-align: center;
 }
 .grid {
-  margin: 30px auto;
+  margin: 0 auto;
+}
+.clear {
+  clear: both;
+}
+
+/*** Grid Layouts
+********************/
+.grid-4-1-4 {
+  max-width: 1068px;
+  min-width: 534px;
+}
+@media (max-width: 1068px) {
+  .grid-4-1-4 {
+    width: 534px;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+  }
 }
 
 /*** Settings
 ********************/
 .settings {
-  display: inline-block;
   margin: 0 auto;
 }
-.measures-container, .beats-container, .subdivision-container, .tempo-container{
-  float: left;
+.measures-container, .beats-container, .subdivision-container, .tempo-container {
+  display: inline-block;
   margin: 6px;
 }
 .settings h2 {
   margin-bottom: 20px;
+}
+.tempo-h4 {
+  margin-bottom: 8px;
 }
 .settings-button {
   padding: 3px;
@@ -68,10 +89,11 @@ button {
 .settings-button:hover {
   background: lightblue;
 }
+
 /*** Grid
 ********************/
 .col {
-  float: left;
+  display: inline-block;
   margin: 0 1.5px;
 }
 .box {
@@ -121,9 +143,3 @@ button {
 
 /*** Responsiveness
 ********************/
-@media (max-width: 900px) {
-  .made-by {
-    position: static;
-    margin-top: 20px
-  }
-}

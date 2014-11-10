@@ -17,6 +17,7 @@ $(function() {
   //Initial setup
   createSoundPack();
   buildGrid();
+  gridLayout()
   displaySettings();
 
   //Create settings knobs + knob event handlers
@@ -24,6 +25,7 @@ $(function() {
     'min': 1,
     'max': 240,
     'width': 80,
+    'height': 65,
     'angleOffset': -125,
     'angleArc': 250,
     'release': function (v) { setTempo('colInterval', v) }
@@ -151,9 +153,32 @@ $(function() {
         }
       }
     }
+    gridLayout();
     displaySettings();
   }
   
+  function gridLayout() {
+    //ADD ALL THE CASES - SWITCH? IF/ELSE???
+    $('.grid').addClass('grid-4-1-4');
+    responsiveGrid();
+  }
+
+  //Applies class for layout
+  function responsiveGrid() {
+    if (settings.measures == 1) {
+      $('.grid').css({ 
+        'text-align': 'center',
+        'display': 'block'
+      });
+    }
+    if (settings.measures != 1) {
+      $('.grid').css({ 
+        'text-align': 'initial',
+        'display': 'inline-block'
+      });
+    }
+  }
+
   //Display settings values
   function displaySettings() {
     if (settings.subdivision == 3) {
