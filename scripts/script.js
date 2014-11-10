@@ -46,7 +46,7 @@ $(function() {
      toggleClicked();
    });
 
-  //Press spacebar
+  //Press spacebar to Start/Stop
   $(window).keypress(function(e) {
     if (e.keyCode == 0 || e.keyCode == 32) {
       if ("activeElement" in document) {
@@ -59,7 +59,7 @@ $(function() {
   //Settings panel toggle animation
   $('.settings-toggle').click(function() {
     if (settingsHidden === false) {
-      $('.settings-container').animate({bottom:'-186px'},500);
+      $('.settings-container').animate({bottom:'-168px'},500);
       $('.settings-toggle').html('O');
       $('.settings-toggle').addClass('settings-hover');
       settingsHidden = true;
@@ -109,7 +109,7 @@ $(function() {
     $(this).toggleClass("selected");
   }
 
-  //Start button <-> Stop Button 
+  //Start/Stop button toggle
   function toggleClicked() {
     if ($('.toggle').html() == 'Start') {
       $('.toggle').html('Stop');
@@ -122,7 +122,7 @@ $(function() {
     }
   }
 
-  //Shows which settings buttons are available to change
+  //Grays out min/max settings
   function buttonOptions() {
     if (settings.beats == 4) {
       $('.beats-container .plus').addClass('not-an-option');
@@ -352,7 +352,7 @@ $(function() {
     }
   }
 
-  //Loop through every column
+  //Loop through every column and find selected boxes
   function gridLoop() {
     if (settings.loopStatus) {
       settings.totalCol = settings.measures * settings.beats * settings.subdivision;
