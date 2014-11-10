@@ -48,6 +48,13 @@ h2 .kerning {
 .plus:hover, .toggle:hover, .settings-hover:hover {
   background: #86c5da;
 }
+.not-an-option {
+  background: #333;
+  cursor: default;
+}
+.not-an-option:hover {
+  background: #333;
+}
 /*** Header
 ********************/
 header {
@@ -169,6 +176,7 @@ header, footer, .settings {
 .measures-container, .beats-container, .subdivision-container, .tempo-container {
   display: inline-block;
   margin: 6px;
+  width: 80px;
 }
 .settings h2 {
   margin-bottom: 20px;

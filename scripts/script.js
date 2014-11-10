@@ -18,8 +18,9 @@ $(function() {
   //Initial setup
   createSoundPack();
   buildGrid();
-  gridLayout()
+  gridLayout();
   displaySettings();
+  buttonOptions();
 
   //Create tempo knobs
   $('.tempo-knob').knob({
@@ -55,6 +56,7 @@ $(function() {
     }
   });
 
+  //Settings panel toggle animation
   $('.settings-toggle').click(function() {
     if (settingsHidden === false) {
       $('.settings-container').animate({bottom:'-180px'},500);
@@ -120,6 +122,39 @@ $(function() {
     }
   }
 
+  function buttonOptions() {
+    if (settings.beats == 4) {
+      $('.beats-container .plus').addClass('not-an-option');
+      $('.beats-container .minus').removeClass('not-an-option');
+    }
+    else {
+      $('.beats-container .minus').addClass('not-an-option');
+      $('.beats-container .plus').removeClass('not-an-option');
+    }
+    if (settings.measures == 4) {
+      $('.measures-container .plus').addClass('not-an-option');
+      $('.measures-container .minus').removeClass('not-an-option');
+    }
+    else if (settings.measures == 1) {
+      $('.measures-container .minus').addClass('not-an-option');
+      $('.measures-container .plus').removeClass('not-an-option');
+    }
+    else {
+      $('.measures-container .plus, .measures-container .minus').removeClass('not-an-option');
+    }
+    if (settings.subdivision == 5) {
+      $('.subdivision-container .plus').addClass('not-an-option');
+      $('.subdivision-container .minus').removeClass('not-an-option');
+    }
+    else if (settings.subdivision == 3) {
+      $('.subdivision-container .minus').addClass('not-an-option');
+      $('.subdivision-container .plus').removeClass('not-an-option');
+    }
+    else {
+       $('.subdivision-container .plus, .subdivision-container .minus').removeClass('not-an-option');
+    }
+  }
+
   //Set tempo setting
   function setTempo(dataName, dataVal) {
     var milliseconds = Math.round((((60/dataVal)*1000)*100000)/100000)/settings.subdivision;
@@ -173,6 +208,7 @@ $(function() {
     }
     gridLayout();
     displaySettings();
+    buttonOptions();
   }
   
   //Applies class for layout
