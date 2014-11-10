@@ -14,18 +14,20 @@ $(function() {
     selectedBoxes: {}
   };
 
-//Setup
+  //Initial setup
   createSoundPack();
   buildGrid();
 
-  //Renders Tempo knob
-  $(".knob").knob({
+  //Create settings knobs + knob event handlers
+  $('.tempo-knob').knob({
     'min': 1,
     'max': 240,
-    'width': 100,
-    'change': function (v) { setTempo('colInterval', v) },
+    'width': 80,
+    'angleOffset': -125,
+    'angleArc': 250,
     'release': function (v) { setTempo('colInterval', v) }
   });
+
 
 //Event Handlers
   //Toggles selected class
@@ -37,7 +39,7 @@ $(function() {
      toggleClicked();
    });
 
-    //Press spacebar
+  //Press spacebar
   $(window).keypress(function(e) {
     if (e.keyCode == 0 || e.keyCode == 32) {
       if ("activeElement" in document) {
@@ -46,7 +48,7 @@ $(function() {
       toggleClicked();
     }
   });
- 
+
   //Reset button
   $(".reset").click(function() {
     $(".box").removeClass("selected");
@@ -54,23 +56,36 @@ $(function() {
       settings.selectedBoxes[i] = [];
     }
   });
-    
-  //Measures/Beats/Subdivision listeners
-  $('.measures-container input').on('change', function() {
-    settings.measures = $('input[name="measures"]:checked', '.measures-container').val(); 
+
+  //Measures/Beats/Subdivision settings
+  $('.settings-button').click(function() {
+    var settingsOption = $(this).attr('data-option');
+
+    if ($(this).hasClass('settings-beats')) {
+      settingsChange('beats', settingsOption);
+    }
+    else if ($(this).hasClass('settings-measures')) {
+      settingsChange('measures', settingsOption);
+    }
+    else if ($(this).hasClass('settings-subdivision')) {
+      settingsChange('subdivision', settingsOption);
+    }
     buildGrid();
   });
 
-  $('.beats-container input').on('change', function() {
-    settings.beats = $('input[name="beats"]:checked', '.beats-container').val(); 
-    buildGrid();
-  });
-
-  $('.subdivision-container input').on('change', function() {
-    settings.subdivision = $('input[name="subdivision"]:checked', '.subdivision-container').val(); 
-    //console.log("Subdivision is now: "+settings.subdivision);
-    buildGrid();
-  });
+//Settings Functions
+  //When Box is Selected
+  function boxSelected() {
+    var col = $(this).attr('data-col');
+    var row = $(this).attr('data-row');
+    var array = settings.selectedBoxes["col"+col];
+    if (array.indexOf(row) !== -1) {
+      array.splice(array.indexOf(row), 1);
+    } else {
+      array.push(row);
+    }
+    $(this).toggleClass("selected");
+  }
 
   //Start button <-> Stop Button 
   function toggleClicked() {
@@ -85,8 +100,54 @@ $(function() {
     }
   }
 
-//Functions
+  //Set tempo
+  function setTempo(dataName, dataVal) {
+    var milliseconds = Math.round((((60/dataVal)*1000)*100000)/100000)/settings.subdivision;
+        //console.log("Sixteenth is precisely "+sixteenth+" milliseconds");
+        settings[dataName] = milliseconds;
+  }
 
+  //Set Beats/Measures/Subdivision
+  function settingsChange(settingsType, settingsVal) {
+    if (settingsType == 'beats') {
+      if (settingsVal == 'plus') {
+        if (settings.beats < 4) {
+          settings.beats++;
+        }
+      }
+      else if (settingsVal == 'minus') {
+        if (settings.beats > 3) {
+          settings.beats--;
+        }
+      }
+    }
+    if (settingsType == 'measures') {
+      if (settingsVal == 'plus') {
+        if (settings.measures < 4) {
+          settings.measures++;
+        }
+      }
+      else if (settingsVal == 'minus') {
+        if (settings.measures > 1) {
+          settings.measures--;
+        }
+      }
+    }
+    else if (settingsType == 'subdivision') {
+      if (settingsVal == 'triplets') {
+        settings.subdivision = 3;
+      }
+      else if (settingsVal == 'sixteenths') {
+        settings.subdivision = 4;
+      }
+      else if (settingsVal == 'quintuplets') {
+        settings.subdivision = 5;
+      }
+    }
+  }
+  
+
+//Tonal Sequencer Functions
   //Dynamically create sound file references
   function createSoundPack() {
     for(var soundIndex = 1; soundIndex<=16; soundIndex++) {
@@ -136,6 +197,7 @@ $(function() {
     console.log(settings.selectedBoxes);
   }
 
+  //Marks downbeats
   function findDownbeat() {
     var markedColumns = $('.grid').find(".col");
     var measureMarkers = settings.beats * settings.subdivision;
@@ -155,6 +217,7 @@ $(function() {
     }
   }
 
+  //Populates grid with selected boxes
   function populateColNotes(col, array) {
     for (var i = 0; i < array.length; i++) {
       console.log("i is: "+i);
@@ -164,7 +227,6 @@ $(function() {
       console.log(selector);
     }
   }
-
 
   //Loop through every column
   function gridLoop() {
@@ -204,27 +266,6 @@ $(function() {
       soundToPlay.play();
     }
     notesToPlay = [];
-  }
-
-
-  //Set tempo
-  function setTempo(dataName, dataVal) {
-    var milliseconds = Math.round((((60/dataVal)*1000)*100000)/100000)/settings.subdivision;
-        //console.log("Sixteenth is precisely "+sixteenth+" milliseconds");
-        settings[dataName] = milliseconds;
-  }
-
-  //When Box is Selected
-  function boxSelected() {
-    var col = $(this).attr('data-col');
-    var row = $(this).attr('data-row');
-    var array = settings.selectedBoxes["col"+col];
-    if (array.indexOf(row) !== -1) {
-      array.splice(array.indexOf(row), 1);
-    } else {
-      array.push(row);
-    }
-    $(this).toggleClass("selected");
   }
 
 });

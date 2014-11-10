@@ -23,37 +23,30 @@
       <div class="grid-container">
       	<div class="grid"></div>
       </div>
-     <div>
-        <button class="toggle">Start</button>
-        <button class="reset">Clear</button>
-      </div>
       <div class="settings options">
-        <h2>Options</h2>
-        <div class="tempo-dial">
-          <h4>Tempo</h4><input class="knob option input" value="120"  data-option="colInterval">
+        <div>
+          <button class="toggle">Start</button>
+          <button class="reset">Clear</button>
         </div>
-        <div class="measures-container">
-          <h4>Measures</h4>
-          <form>
-            <input class="option input" type="radio" name="measures" value="1" data-option="measures" checked>1
-            <input class="option input" type="radio" name="measures" value="2" data-option="measures">2
-            <input class="option input" type="radio" name="measures" value="3" data-option="measures">3
-            <input class="option input" type="radio" name="measures" value="4" data-option="measuress">4
-          </form>
+        <div class="tempo-container">
+          <h4>Tempo</h4>
+          <input class="tempo-knob option input" value="120"  data-option="colInterval">
         </div>
         <div class="beats-container">
           <h4>Beats</h4>
-          <form>
-            <input class="option input" type="radio" name="beats" value="3" data-option="beats">3
-            <input class="option input" type="radio" name="beats" value="4" data-option="beats" checked>4
-          </form> 
+          <div class="settings-button plus settings-beats" data-option="plus">+</div>
+          <div class="settings-button minus settings-beats" data-option="minus">-</div>
+        </div>
+        <div class="measures-container">
+          <h4>Measures</h4>
+          <div class="settings-button plus settings-measures" data-option="plus">+</div>
+          <div class="settings-button minus settings-measures" data-option="minus">-</div>
         </div>
         <div class="subdivision-container">
-          <h4>Subs</h4>
-          <form>
-            <input class="option input" type="radio" name="subdivision" value="3" data-option="subdivision">3
-            <input class="option input" type="radio" name="subdivision" value="4" data-option="subdivision" checked>4
-          </form>
+          <h4>Subdivision</h4>
+          <div class="settings-button triplets settings-subdivision" data-option="triplets">Triplets</div>
+          <div class="settings-button sixteenths settings-subdivision" data-option="sixteenths">Sixteenths</div>
+          <div class="settings-button quintuplets settings-subdivision" data-option="quintuplets">Quintuplets</div>
         </div>
       </div>
     </main>

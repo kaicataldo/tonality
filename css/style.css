@@ -51,7 +51,7 @@ button {
   display: inline-block;
   margin: 0 auto;
 }
-.measures-container, .beats-container, .subdivision-container, .tempo-dial {
+.measures-container, .beats-container, .subdivision-container, .tempo-container{
   float: left;
   margin: 6px;
 }
@@ -62,25 +62,22 @@ button {
 /*** Grid
 ********************/
 .col {
-  display: inline-block;
+  float: left;
   margin: 0 1.5px;
 }
 .box {
   width: 30px;
   height: 20px;
   margin: 3px 0;
-  background: #CCC;
+  background: #BBB;
   border-radius: 10%;
 }
 .box:hover {
   cursor: pointer;
 }
-.active, .active.downbeat, .active.downbeat-measure {
+.active, .active.downbeat, .active.downbeat-measure, .selected, .selected.downbeat, .selected.downbeat-measure {
   background: #b3ffcc;
   box-shadow: 0px 0px 2px #FFF;
-}
-.selected, .selected.downbeat, .selected.downbeat-measure {
- background: #EEE; 
 }
 .selected.active {
   background: #66FF99;
