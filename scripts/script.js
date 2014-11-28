@@ -33,7 +33,7 @@ $(function() {
     'fgColor': '#86c5da',
     'bgColor': '#666',
     'lineCap': 'round',
-    'release': function (v) { setTempo('colInterval', v) }
+    'release': function (v) { setTempo('colInterval', v); }
   });
 
 //Event Handlers
@@ -48,7 +48,7 @@ $(function() {
 
   //Press spacebar to Start/Stop
   $(window).keypress(function(e) {
-    if (e.keyCode == 0 || e.keyCode == 32) {
+    if (e.keyCode === 0 || e.keyCode == 32) {
       if ("activeElement" in document) {
       document.activeElement.blur();
       }
