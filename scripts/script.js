@@ -274,7 +274,7 @@ $(function() {
 //Tonal Sequencer Functions
   //Dynamically create sound file references
   function createSoundPack() {
-    for(var soundIndex = 1; soundIndex<=16; soundIndex++) {
+    for (var soundIndex = 1; soundIndex<=16; soundIndex++) {
       settings.soundPack[soundIndex-1] = new Howl({
         urls: ['media/'+soundIndex+'.ogg', 'media/'+soundIndex+'.mp3'],
         fadeIn: settings.fadeInVal,

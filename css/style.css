@@ -6,23 +6,16 @@ html {
 }
 body {
   height: 100%;
-  font-family: corbertregular;
+  font-family: 'Play', sans-serif;
   background: #333;
   color: #EEE;
   margin: 0 0 24px;
-}
-h1, h2 {
-  letter-spacing: -.08em;
-  line-height: 1em;
 }
 h1 {
   font-size: 4em;
 }
 h2 {
   font-size: 2em;
-}
-.kerning {
-  letter-spacing: -.26em;
 }
 h4 {
   margin: .5em auto .25em;
@@ -70,7 +63,7 @@ header, footer, .settings {
 ********************/
 .title {
   display: inline-block;
-  margin: 20px auto 40px auto;
+  margin: 30px auto;
 }
 
 /*** Main
