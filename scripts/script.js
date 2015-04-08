@@ -318,7 +318,7 @@ $(function() {
     }
     settings.currentCol = 1;
     findDownbeat();
-    console.log(settings.selectedBoxes);
+    //console.log(settings.selectedBoxes);
   }
 
   //Marks downbeats
