@@ -211,7 +211,7 @@ $(function() {
     displaySettings();
     buttonOptions();
   }
-  
+
   //Applies class for layout
   function gridLayout() {
     $('.grid').removeClass().addClass('grid');
@@ -243,13 +243,13 @@ $(function() {
   //Fixes grid alignment based on number of measures
   function gridMeasuresLayout() {
     if (settings.measures == 1) {
-      $('.grid').css({ 
+      $('.grid').css({
         'text-align': 'center',
         'display': 'block'
       });
     }
     if (settings.measures != 1) {
-      $('.grid').css({ 
+      $('.grid').css({
         'text-align': 'initial',
         'display': 'inline-block'
       });
@@ -309,7 +309,7 @@ $(function() {
       //Finally append this row to the container.
       container.append(col);
 
-      if ((settings.selectedBoxes["col"+colIndex] != undefined) || (settings.selectedBoxes["col"+colIndex] != null)){
+      if (settings.selectedBoxes["col"+colIndex] !== undefined){
         console.log(settings.selectedBoxes["col"+colIndex]);
         populateColNotes(colIndex, settings.selectedBoxes["col"+colIndex]);
       } else {
@@ -367,7 +367,7 @@ $(function() {
         playSound();
         settings.currentCol++;
         if (settings.currentCol <= settings.totalCol){
-          gridLoop();        
+          gridLoop();
         }
         else if (settings.currentCol == settings.totalCol + 1) {
           settings.currentCol = 1;
@@ -386,7 +386,7 @@ $(function() {
   function playSound() {
     var notesToPlay = settings.selectedBoxes["col" + settings.currentCol];
     for (var i = 0; i < notesToPlay.length; i++) {
-      var soundToPlay = eval("settings.soundPack[" + (notesToPlay[i]-1) + "]");
+      var soundToPlay = settings.soundPack[notesToPlay[i] - 1];
       soundToPlay.play();
     }
     notesToPlay = [];
