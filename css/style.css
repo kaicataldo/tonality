@@ -23,7 +23,7 @@ h4 {
 .clear {
   clear: both;
 }
-header, footer, .settings {
+header, .settings {
   text-align: center;
 }
 /*** Buttons
@@ -167,28 +167,6 @@ main {
     text-align: center;
     display: inline-block;
   }
-}
-
-/*** Footer
-********************/
-footer {
-  height: 24px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-.made-by {
-  float: right;
-  padding: 0 8px 4px 0;
-  color: #EEE;
-}
-.made-by a {
-  color: #EEE;
-  text-decoration: none;
-}
-.made-by a:hover {
-  text-decoration: underline;
 }
 
 /*** Settings
